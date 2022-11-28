@@ -52,11 +52,17 @@ const를 자주 사용하자
                      'concatenating multiple strings!';
 </code></pre>
 
+* 아래의 구문은 오류가 발생한다.
 <pre><code>let someLongString = 'Hi, this is going to be a bit longer, 
                       so maybe split it across multiple lines by 
                       concatenating multiple strings!';
-<!-- 오류구문 -->
 </code></pre>
+```javascript
+let someLongString = 'Hi, this is going to be a bit longer, 
+                      so maybe split it across multiple lines by 
+                      concatenating multiple strings!';
+```
+
 
 ### 기타 조언
 1. 끝에 ;을 사용하는 것은 선택이지만 다른 프래그래밍 언어에서는 끝에 ;이 필수인 언어가 많으므로 끝에 ;을 사용하는 것이 좋다.
