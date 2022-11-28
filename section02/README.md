@@ -45,11 +45,18 @@ const를 자주 사용하자
                  1200;
 </code></pre>  
   
+* 자바스크립트는 첫 번째 줄 문자열의 끝을 찾을 수 없고 - 다른 줄에서는 찾지 않는다. 문자열은 항상 한 줄에 있어야 한다.
+
 <pre><code>let someLongString = 'Hi, this is going to be a bit longer, ' +
                      'so maybe split it across multiple lines by ' +
                      'concatenating multiple strings!';
 </code></pre>
-* JavaScript는 첫 번째 줄 문자열의 끝을 찾을 수 없고 - 다른 줄에서는 찾지 않는다. 문자열은 항상 한 줄에 있어야 합니다.
+
+<pre><code>let someLongString = 'Hi, this is going to be a bit longer, 
+                      so maybe split it across multiple lines by 
+                      concatenating multiple strings!';
+<!-- 오류구문 -->
+</code></pre>
 
 ### 기타 조언
 1. 끝에 ;을 사용하는 것은 선택이지만 다른 프래그래밍 언어에서는 끝에 ;이 필수인 언어가 많으므로 끝에 ;을 사용하는 것이 좋다.
