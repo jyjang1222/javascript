@@ -65,7 +65,32 @@ let someLongString = 'Hi, this is going to be a bit longer,
                       concatenating multiple strings!';
 ```
 
+### 전역 / 지역 변수
+1. 전역(global) 변수는 함수의 외부에서 선언된 변수를 의미한다.
+2. 전역 변수는 함수 내에서도 참조(사용)가 가능하다.
+3. 함수내에 선언된 변수는 지역(local) (스코프) 변수로 불리며 함수외부에서 사용이 불가하다.
+4. 변수의 참조(사용) 가능한 유효(가능) 범위를 스코프(scope)라고 한다.
+
+* 전역변수와 지역변수에 동일한 변수를 선언한다면?
+```javascript
+let userName = 'Max';
+function greetUser(name) {
+  let userName = name;
+  alert(userName);
+}
+userName = 'Manu';
+greetUser('Max');
+// 'Max'알람
+```
+서로 다른 스코프에서 변수를 생성하기 때문에 변수를 덮어쓰거나 제거하지않고 동일한 이름의 전역변수와 지역변수는 공존하게 된다.
+
+```javascript
+let userName = 'Max';
+let userName = 'Manu';
+```
+만일 동일 스코프에서 동일한 이름의 변수를 선언하게되면 오류가 발생하게 된다.
 
 ### 기타 조언
 1. 끝에 ;을 사용하는 것은 선택이지만 다른 프래그래밍 언어에서는 끝에 ;이 필수인 언어가 많으므로 끝에 ;을 사용하는 것이 좋다.
 2. 함수와 같이 중괄호 뒤에는 세미콜론을 사용하지 않는다.
+3. 브라우저는 스크립트를 실행하기 전에 자동으로 모든 함수를 등록한다. 그러기 때문에 자바스크립트는 함수 선언을 밑에서 해도 위에서 호출이 가능하다. (함수 정의는 파일위쪽에 하는 것이 가독성에 좋다)
