@@ -33,30 +33,32 @@ const를 자주 사용하자
 
 ### 템플릿 리터럴
 * 백틱`을 활용하면 문자열안에 표현식을 적을 수 있다.  
-<pre><code>`(${defaultResult} + 10) * 3 / 2 - 1`  </code></pre> 
+```javascript
+`(${defaultResult} + 10) * 3 / 2 - 1`
+```
 
 * 이러한 과정을 **템플릿 리터럴** 이라고 부른다
 
 ### 코드 스타일, 컨벤션 & 구문
 * 여러 줄에 걸쳐 긴 표현식을 구조화하여 더 읽기 쉽게 만들 수 있습니다
-<pre><code>let someResult = 5 + 10 - 3 + 22 - 10000 + 5.344 * 1200;</code></pre>
-<pre><code>let someResult = 5 +
+```javascript
+let someResult = 5 + 10 - 3 + 22 - 10000 + 5.344 * 1200;
+```
+```javascript
+let someResult = 5 +
                  10 - 3 + 22 - 10000 + 5.344 *
                  1200;
-</code></pre>  
+```
   
 * 자바스크립트는 첫 번째 줄 문자열의 끝을 찾을 수 없고 - 다른 줄에서는 찾지 않는다. 문자열은 항상 한 줄에 있어야 한다.
 
-<pre><code>let someLongString = 'Hi, this is going to be a bit longer, ' +
+```javascript
+let someLongString = 'Hi, this is going to be a bit longer, ' +
                      'so maybe split it across multiple lines by ' +
                      'concatenating multiple strings!';
-</code></pre>
+```
 
 * 아래의 구문은 오류가 발생한다.
-<pre><code>let someLongString = 'Hi, this is going to be a bit longer, 
-                      so maybe split it across multiple lines by 
-                      concatenating multiple strings!';
-</code></pre>
 ```javascript
 let someLongString = 'Hi, this is going to be a bit longer, 
                       so maybe split it across multiple lines by 
