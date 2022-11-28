@@ -37,6 +37,20 @@ const를 자주 사용하자
 
 * 이러한 과정을 **템플릿 리터럴** 이라고 부른다
 
+### 코드 스타일, 컨벤션 & 구문
+* 여러 줄에 걸쳐 긴 표현식을 구조화하여 더 읽기 쉽게 만들 수 있습니다
+<pre><code>let someResult = 5 + 10 - 3 + 22 - 10000 + 5.344 * 1200;</code></pre>
+<pre><code>let someResult = 5 +
+                 10 - 3 + 22 - 10000 + 5.344 *
+                 1200;
+</code></pre>  
+  
+<pre><code>let someLongString = 'Hi, this is going to be a bit longer, ' +
+                     'so maybe split it across multiple lines by ' +
+                     'concatenating multiple strings!';
+</code></pre>
+* JavaScript는 첫 번째 줄 문자열의 끝을 찾을 수 없고 - 다른 줄에서는 찾지 않는다. 문자열은 항상 한 줄에 있어야 합니다.
+
 ### 기타 조언
 1. 끝에 ;을 사용하는 것은 선택이지만 다른 프래그래밍 언어에서는 끝에 ;이 필수인 언어가 많으므로 끝에 ;을 사용하는 것이 좋다.
 2. 함수와 같이 중괄호 뒤에는 세미콜론을 사용하지 않는다.
