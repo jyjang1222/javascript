@@ -13,22 +13,23 @@ function createAndWriteOutput(operater, resultBeforeCalc, calcNumber) {
   outputResult(currentResult, calcDescription); //vender.js 에서 옴
 }
 
-// 로그생성
+// 로그생성후 logEntries배열에 추가
 function writeToLog(operationIdentifier, prevResult, operationNumber, newResult) {
   const logEntry = {
-    operation: operationIdentifier,
-    prevResult: prevResult,
-    number: operationNumber,
-    result: newResult
+    operation: operationIdentifier, //연산유형
+    prevResult: prevResult, //이전결과
+    number: operationNumber, //입력값
+    result: newResult //이후결과
   };
   logEntries.push(logEntry);
 }
 
 function add() {
   const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult += enteredNumber;
+  const initialResult = currentResult; //초기결과
+  currentResult += enteredNumber; //현재결과에 입력값 더함
   createAndWriteOutput('+', initialResult, enteredNumber);
+  writeToLog('ADD', initialResult, enteredNumber, currentResult);
 }
 
 function subtract() {
@@ -36,13 +37,7 @@ function subtract() {
   const initialResult = currentResult;
   currentResult -= enteredNumber;
   createAndWriteOutput('-', initialResult, enteredNumber);
-  const logEntry = {
-    operation: 'SUBTRACT',
-    prevResult: initialResult,
-    number: enteredNumber,
-    result: currentResult
-  };
-  logEntries.push(logEntry);
+  writeToLog('SUBTRACT', initialResult, enteredNumber, currentResult);
 }
 
 function multiply() {
@@ -50,6 +45,7 @@ function multiply() {
   const initialResult = currentResult;
   currentResult *= enteredNumber;
   createAndWriteOutput('*', initialResult, enteredNumber);
+  writeToLog('MULTIPLY', initialResult, enteredNumber, currentResult);
 }
 
 function divide() {
@@ -57,6 +53,7 @@ function divide() {
   const initialResult = currentResult;
   currentResult /= enteredNumber;
   createAndWriteOutput('/', initialResult, enteredNumber);
+  writeToLog('DIVIDE', initialResult, enteredNumber, currentResult);
 }
 
 addBtn.addEventListener('click', add);
