@@ -26,6 +26,7 @@ function writeToLog(operationIdentifier, prevResult, operationNumber, newResult)
 
 function add() {
   const enteredNumber = getUserNumberInput();
+  // console.log(enteredNumber, currentResult);
   const initialResult = currentResult; //초기결과
   currentResult += enteredNumber; //현재결과에 입력값 더함
   createAndWriteOutput('+', initialResult, enteredNumber);
