@@ -13,7 +13,12 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   outputResult(currentResult, calcDescription); // from vendor file
 }
 
-function writeToLog(operationIdentifier, prevResult, operationNumber, newResult) {
+function writeToLog(
+  operationIdentifier,
+  prevResult,
+  operationNumber,
+  newResult
+) {
   const logEntry = {
     operation: operationIdentifier,
     prevResult: prevResult,
