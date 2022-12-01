@@ -23,14 +23,14 @@ function actAndChkResult(actType) {
   
   //힐
   if (actType == 'HEAL') {
-    let healValue2 = HEAL_VALUE;
+    let healValue = HEAL_VALUE;
     if (currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
-      healValue2 = chosenMaxLife - currentPlayerHealth;
+      healValue = chosenMaxLife - currentPlayerHealth;
       currentPlayerHealth = chosenMaxLife;
     } else {
       currentPlayerHealth += HEAL_VALUE;
     }
-    increasePlayerHealth(healValue2);
+    increasePlayerHealth(healValue);
   }
   // 몬스터의 반격
   const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
