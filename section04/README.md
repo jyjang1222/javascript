@@ -76,13 +76,46 @@ if (calcType === 'ADD') {
   - 빈문자열''을 제외한 문자열
   - {}, [] (빈 객체, 빈 배열)
 
+## prompt()
+
+- prompt(msg, default_value)
+- 사용자의 입력을 받을 수 있는 함수이다.
+
+## isNaN()
+
+- 입력된 값이 NaN이면 true 아니면 false
+- 예외처리를 할때 잘 쓰인다.
+
+## || && 추가사항
+
+```javascript
+if(true || false)
+if(false && true)
+```
+
+- or은 첫번째조건이 참이면 두번째 조건에 대해서는 확인하지 않는다.
+- and는 첫번째조건이 거짓이면 두번째 조건에 대해서는 확인하지 않는다.
+
 ## 기타
 
 - 배열이나 객체는 참조형이기 때문에 값이 아니라 메모리 주소를 저장한다.
 - 리터럴값을 넣어 하드코딩한 const 변수명은 값이 변경되지 않음을 강조하기 위해 모두 대문자로 작성하고 스네이크 표기법으로 쓰는 것이 일반적이다.
+- 전역상수는 파일 맨위에 정의해 놓으면 코드분석하기가 쉬워진다.
 - 강사는 이벤트핸들러와 연관된 함수일 때는 함수명 끝에 'Handler'를 추가하는 명명규칙을 사용하는데 참고해서 따라할지 자기만의 규칙을 정할지 하자..
 
 ```javascript
 function attackHandler() {}
 attackBtn.addEventListener('click', attackHandler);
+```
+
+- 식별자로 문자열을 하드코딩해서 사용하는것은 오타가 생길 수 있으므로 좋지않다.
+
+```javascript
+const MODE_ATTACK = 'ATTACK';
+// 좋지않음
+if (actType === 'ATTACK') {
+}
+// 상수의 이름은 잘못 입력하기가 쉽지않아서 좋음
+if (actType === MODE_ATTACK) {
+}
 ```
