@@ -14,21 +14,20 @@ function adjustHealthBars(maxLife) {
   playerHealthBar.value = maxLife;
 }
 
-// 스테이터스바 데미지 적용후 데미지값 반환
 function dealMonsterDamage(damage) {
-  const dealtDamage = parseInt(Math.random() * damage);
-  monsterHealthBar.value -= dealtDamage;
+  const dealtDamage = Math.random() * damage;
+  monsterHealthBar.value = +monsterHealthBar.value - dealtDamage;
   return dealtDamage;
 }
 
 function dealPlayerDamage(damage) {
-  const dealtDamage = parseInt(Math.random() * damage);
-  playerHealthBar.value -= dealtDamage;
+  const dealtDamage = Math.random() * damage;
+  playerHealthBar.value = +playerHealthBar.value - dealtDamage;
   return dealtDamage;
 }
 
 function increasePlayerHealth(healValue) {
-  playerHealthBar.value += healValue;
+  playerHealthBar.value = +playerHealthBar.value + healValue;
 }
 
 function resetGame(value) {

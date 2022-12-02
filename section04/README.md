@@ -96,6 +96,63 @@ if(false && true)
 - or은 첫번째조건이 참이면 두번째 조건에 대해서는 확인하지 않는다.
 - and는 첫번째조건이 거짓이면 두번째 조건에 대해서는 확인하지 않는다.
 
+## 삼항연산자
+
+```javascript
+// 구문 오류
+const userName = if (isLogin) {
+  return 'Max';
+} else {
+  return null;
+}
+
+const userName = isLogin ? 'Max' : null;
+```
+
+- boolean ? true면 실행 : false면 실행
+- 조건식을 통해서 변수에 값을 할당할때 좋다.
+- 중첩도 가능하지만 읽기 어려워질 수 있으므로 지양하는 것이 좋다.
+
+## 표현식(expression)과 문장(statement)의 개념
+
+- 문장(Statement)은 프로그래밍에서 실행 가능한 최소의 코드이다. 한 줄이 될 수도 있고, 블록({})으로 묶여 여러줄이 될 수도 있다.
+
+```javascript
+let a, b; // 변수를 선언하는 문장.
+let c = 1; // 선언과 초기화를 한 번에 하는 문장.
+
+// 조건을 판별하는 if문장
+if (a > b) {
+  console.log('a가 b 보다 큽니다.');
+}
+
+a = b; // 대입 문장
+c = a + b; // 계산 문장
+```
+
+- 표현식(Expression)은 주로 식별자, 연산자, 리터럴 등으로 구성되고 결과가 하나의 값으로 표현되는 문장을 말한다.
+  문장(Statement)은 표현식(Expression)을 포함하며 표현식은 문장의 한 형태라고 볼수있다.
+
+```javascript
+// 대입 연산
+let a = 1;
+let b = 3;
+
+// 사칙연산
+let c = a + 3;
+
+// 삼항연산
+c = a < b ? 1 : 2;
+
+// 익명 함수를 반환하는 표현식
+let anonymousFn = function (a, b) {
+  return a + b;
+};
+let arrowFn = (a, b) => {
+  return a + b;
+};
+```
+
 ## 기타
 
 - 배열이나 객체는 참조형이기 때문에 값이 아니라 메모리 주소를 저장한다.
