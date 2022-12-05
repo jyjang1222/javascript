@@ -76,15 +76,37 @@ if (calcType === 'ADD') {
   - 빈문자열''을 제외한 문자열
   - {}, [] (빈 객체, 빈 배열)
 
-## prompt()
+## Falsy, Truthy 값 응용
 
-- prompt(msg, default_value)
-- 사용자의 입력을 받을 수 있는 함수이다.
+```javascript
+//truthy, falsy가 아닌 boolean값 얻기
+!!''; //false
+!!1; //true
+//2
+//첫번째 truthy값이 반환된다.
+const name = someInput || 'Max';
+//모두 참 또는 truthy 이면 마지막값 반환
+const name = isLoggedIn && 'MAX';
+```
 
-## isNaN()
+1. 논리부정 ! 2번 쓰기
+2. ||을 활용해 기본값 할당하기
 
-- 입력된 값이 NaN이면 true 아니면 false
-- 예외처리를 할때 잘 쓰인다.
+- 추후에 **기본값 매개변수**를 활용하면 ||를 활용하여 기본값을 할당하는 방식은 쓰지않게 된다.. 유지보수를 해야하니 알아는 둬야함.
+
+```javascript
+//ES6 이전 문법
+function printPersonInfo(height, weight, age) {
+  var height = height || 180;
+  var weight = weight || 60;
+  var age = age || 66;
+
+//모던한 문법
+function foo(param1 = 1, param2 = {}, param3 = 'korean') {
+  console.log(param1, param2, param3);
+};
+
+```
 
 ## || && 추가사항
 
@@ -95,6 +117,16 @@ if(false && true)
 
 - or은 첫번째조건이 참이면 두번째 조건에 대해서는 확인하지 않는다.
 - and는 첫번째조건이 거짓이면 두번째 조건에 대해서는 확인하지 않는다.
+
+## prompt()
+
+- prompt(msg, default_value)
+- 사용자의 입력을 받을 수 있는 함수이다.
+
+## isNaN()
+
+- 입력된 값이 NaN이면 true 아니면 false
+- 예외처리를 할때 잘 쓰인다.
 
 ## 삼항연산자
 
@@ -115,7 +147,16 @@ const userName = isLogin ? 'Max' : null;
 
 ## 표현식(expression)과 문장(statement)의 개념
 
-- 문장(Statement)은 프로그래밍에서 실행 가능한 최소의 코드이다. 한 줄이 될 수도 있고, 블록({})으로 묶여 여러줄이 될 수도 있다.
+```javascript
+// 표현식(Expression)입니다.
+'hello' + 'world';
+!true;
+assignedVariable * 4;
+```
+
+- 표현식(Expression)은 주로 식별자, 연산자, 리터럴 등으로 구성되고 하나의 값으로 표현된다.
+- 값이 들어가야 할 곳에 사용이 가능하면 표현식이다.
+- 표현식은 반드시 상태(state)를 바꿀 필요는 없다.
 
 ```javascript
 let a, b; // 변수를 선언하는 문장.
@@ -128,30 +169,17 @@ if (a > b) {
 
 a = b; // 대입 문장
 c = a + b; // 계산 문장
+
+//문장은 값으로 넣을수 없으므로 if문은 문장이다.
+const userName = if (isLogin) {
+  return 'Max';
+} else {
+  return null;
+}
 ```
 
-- 표현식(Expression)은 주로 식별자, 연산자, 리터럴 등으로 구성되고 결과가 하나의 값으로 표현되는 문장을 말한다.
-  문장(Statement)은 표현식(Expression)을 포함하며 표현식은 문장의 한 형태라고 볼수있다.
-
-```javascript
-// 대입 연산
-let a = 1;
-let b = 3;
-
-// 사칙연산
-let c = a + 3;
-
-// 삼항연산
-c = a < b ? 1 : 2;
-
-// 익명 함수를 반환하는 표현식
-let anonymousFn = function (a, b) {
-  return a + b;
-};
-let arrowFn = (a, b) => {
-  return a + b;
-};
-```
+- 문장(Statement)은 기본적으로 무언가를 수행한다.
+- 문장은 값이 들어가야 할 곳에 들어갈 수 없다.
 
 ## 기타
 
@@ -169,10 +197,10 @@ attackBtn.addEventListener('click', attackHandler);
 
 ```javascript
 const MODE_ATTACK = 'ATTACK';
-// 좋지않음
+// 오타가 생길수 있어 아래코드는 좋지않다
 if (actType === 'ATTACK') {
 }
-// 상수의 이름은 잘못 입력하기가 쉽지않아서 좋음
+// 상수의 이름은 잘못 입력하기가 쉽지않아서 괜찮다
 if (actType === MODE_ATTACK) {
 }
 ```
