@@ -59,6 +59,8 @@ if (calcType === 'ADD') {
 ### switch & case문
 
 ```javascript
+const LOG_EVENT_PLAYER_ATTACK = 'PLAYER_ATTACK';
+const LOG_EVENT_PLAYER_STRONG_ATTACK = 'PLAYER_STRONG_ATTACK';
 switch (ev) {
   case LOG_EVENT_PLAYER_ATTACK:
     logEntry.target = 'MONSTER';
@@ -91,7 +93,7 @@ switch (ev) {
 - case에는 비교할 값을 넣는다.
 - break키워드를 사용해서 조건을 만족하면 탈출하도록 해줘야한다.
 - switch문 끝에는 else처럼 default키워드를 사용할수있다.
-- 위 코드처럼 단순비교일때 사용하면 코드의 가독성이 좋아진다.
+- 위 코드처럼 문자열 단순비교일때 사용하면 코드의 가독성이 좋아진다.
 - 복잡한 조건이 필요하면 당연히 if문을 사용하는것이 좋다.
 
 ## 논리연산자
@@ -280,7 +282,20 @@ do {
 
 ### break & continue 키워드
 
+```javascript
+for (let i = 1; i++) {
+  if (i % 2 === 0)
+    continue
+  console.log(i)
+  if (i === 101)
+    break
+}
+```
+
 - 반복문을 제어하는데 사용된다.
+- break 키워드는 반복문을 탈출할때 사용된다.
+- continue 키워드 아래의 코드를 실행하지않고 다음 반복으로 넘어갈때 사용된다.
+- 중첩반복문일 경우에는 해당 반복문 하나만 해당된다.
 
 ## 기타
 
