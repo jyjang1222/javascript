@@ -26,9 +26,9 @@
 'a' > 'b'; // false
 ```
 
-## if문 else if문
+## 제어문
 
-- if문
+### if문
 
 ```javascript
 // 괄호안의 등식을 만족(true) 할 경우 if문 이후의 중괄호 실행
@@ -42,7 +42,7 @@ if (calcType === 'ADD') {
 }
 ```
 
-- else if문
+### else if문
 
 ```javascript
 // 괄호안의 등식을 만족(true) 할 경우 if문 이후의 중괄호 실행
@@ -55,6 +55,44 @@ if (calcType === 'ADD') {
   mathOperator = '-';
 }
 ```
+
+### switch & case문
+
+```javascript
+switch (ev) {
+  case LOG_EVENT_PLAYER_ATTACK:
+    logEntry.target = 'MONSTER';
+    break;
+  case LOG_EVENT_PLAYER_STRONG_ATTACK:
+    logEntry = {
+      event: ev,
+      value: val,
+      target: 'MONSTER',
+      finalMonsterHealth: monsterHealth,
+      finalPlayerHealth: playerHealth
+    };
+    break;
+  default:
+    logEntry = {};
+  // 위와 동일한 코드이다.
+  // if (ev === LOG_EVENT_PLAYER_ATTACK) {
+  //   logEntry.target = 'MONSTER';
+  // } else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
+  //   logEntry = {
+  //     event: ev,
+  //     value: val,
+  //     target: 'MONSTER',
+  //     finalMonsterHealth: monsterHealth,
+  //     finalPlayerHealth: playerHealth
+}
+```
+
+- switch 키워드는 값을 받는다.
+- case에는 비교할 값을 넣는다.
+- break키워드를 사용해서 조건을 만족하면 탈출하도록 해줘야한다.
+- switch문 끝에는 else처럼 default키워드를 사용할수있다.
+- 위 코드처럼 단순비교일때 사용하면 코드의 가독성이 좋아진다.
+- 복잡한 조건이 필요하면 당연히 if문을 사용하는것이 좋다.
 
 ## 논리연산자
 
@@ -82,11 +120,13 @@ if (calcType === 'ADD') {
 //truthy, falsy가 아닌 boolean값 얻기
 !!''; //false
 !!1; //true
-//2
+
 //첫번째 truthy값이 반환된다.
-const name = someInput || 'Max';
+const someInput = '';
+const name = someInput || 'Max'; // 'Max'
 //모두 참 또는 truthy 이면 마지막값 반환
-const name = isLoggedIn && 'MAX';
+let isLoggedIn = true;
+const shoppingCart = isLoggedIn && ['Books']; // ['Books']
 ```
 
 1. 논리부정 ! 2번 쓰기
@@ -105,7 +145,6 @@ function printPersonInfo(height, weight, age) {
 function foo(param1 = 1, param2 = {}, param3 = 'korean') {
   console.log(param1, param2, param3);
 };
-
 ```
 
 ## || && 추가사항
@@ -181,6 +220,68 @@ const userName = if (isLogin) {
 - 문장(Statement)은 기본적으로 무언가를 수행한다.
 - 문장은 값이 들어가야 할 곳에 들어갈 수 없다.
 
+## 반복문
+
+### for문
+
+```javascript
+for (let i = 0; i < 3; i++) {
+  console.log(i);
+}
+for (let i = 0; i < battleLog.length; i++) {
+  console.log(i);
+}
+```
+
+- 기본형은 카운터변수와 반복을 탈출할 증감연산자가 존재한다.
+- 증감연산자 대신 i += 2 같은 문장도 사용 가능 하다.
+- **length속성**을 사용해서 배열의 길이나 문자열의 길이를 가져오는 것도 가능하다.
+
+### for of문
+
+```javascript
+for (const el of arr) {
+  console.log(el);
+}
+```
+
+- 배열의 값을 참조할때 사용된다.
+
+### for in문
+
+```javascript
+for (const el in obj) {
+  console.log(key);
+  console.log(obj[key]);
+}
+```
+
+- 객체의 키(속성)를 참조할때 사용된다.
+
+### while & do while문
+
+```javascript
+while (isLoggedIn) {
+  ...
+}
+
+let j = 3;
+do {
+  console.log(j)
+  j++;
+} while (j < 3);
+```
+
+- 카운터가 있는 경우는 for문을 주로 사용해서 카운터는 잘 사용되지않는다.
+- 반복횟수를 모르거나 무한반복을 돌릴때 주로 사용된다.
+- 특정 시점에 무한반복이 중단될 불리언 혹은 break키워드가 사용된다.
+- do while문은 조건을 나중에 확인해서 코드를 무조건 한번은 실행하게된다.
+- do while문의 끝에는 ;을 붙이는 것이 좋다.
+
+### break & continue 키워드
+
+- 반복문을 제어하는데 사용된다.
+
 ## 기타
 
 - 배열이나 객체는 참조형이기 때문에 값이 아니라 메모리 주소를 저장한다.
@@ -200,7 +301,7 @@ const MODE_ATTACK = 'ATTACK';
 // 오타가 생길수 있어 아래코드는 좋지않다
 if (actType === 'ATTACK') {
 }
-// 상수의 이름은 잘못 입력하기가 쉽지않아서 괜찮다
+// 상수의 이름은 잘못 입력하기가 쉽지않아서 좋다
 if (actType === MODE_ATTACK) {
 }
 ```
