@@ -286,7 +286,7 @@ do {
 for (let i = 1; i++) {
   if (i % 2 === 0)
     continue
-  console.log(i)
+  console.log(i) //홀만 출력
   if (i === 101)
     break
 }
@@ -295,7 +295,44 @@ for (let i = 1; i++) {
 - 반복문을 제어하는데 사용된다.
 - break 키워드는 반복문을 탈출할때 사용된다.
 - continue 키워드 아래의 코드를 실행하지않고 다음 반복으로 넘어갈때 사용된다.
-- 중첩반복문일 경우에는 해당 반복문 하나만 해당된다.
+- 중첩반복문일 경우에는 자신이 속한 반복문 하나만 해당된다.
+
+```javascript
+outerFor: for (let i = 1; i <= 2; i++) {
+    console.log(i);
+    for (let j = 1; j <= 3; j++) {
+        console.log(j);
+        if (i === 2 && j === 2) {
+            break outerFor;
+        }
+    }
+}
+```
+
+- 반복문에 레이블(label)을 달아서 외부반복문을 제어할 수 있다.
+- 레이블은 사용할 일이 거의 없다. 이런 기능이 있다는 것만 알아두자..
+
+### throw키워드를 이용해 오류를 의도적으로 발생시키기
+- 자바스크립트는 매우 관대해서 오류가 잘 발생하지않는다.
+```javascript
+let inputNumber = parseInt(prompt("I'm Number"));
+// 사용자가 숫자대신 문자를 입력해도 오류가 뜨지않고 NaN을 반환한다.
+
+function getInputNumber() {
+  const inputNumber = parseInt(prompt("I'm Number"));
+  if (isNaN(inputNumber) || inputNumber <= 0) {
+    throw {message: 'Invalid user input, not a number'} //오류메세지를 임의로 직접 설정
+  }
+  return inputNumber;
+}
+/*
+커스텀 오류를 발생시켜 스크립트 실행이 중단된다.
+Uncaught
+{message: 'Invalid user input, not a number'} : Object
+*/
+```
+- 자바스크립트로 개발을 할때 여러 파일에 걸쳐있는 애플리케이션을 작성할 수 있는데, 이때 테스트를 위해 애플리케이션의 일부에 의도적으로 오류를 발생시켜 코드 여러 군데에 if 문을 작성하는 대신 공식 오류 관리 도구를 사용해 오류를 처리할 수 있다.
+- **throw** 키워드는 새로운 오류를 만드는 키워드로 무엇이든 오류가 될 수 있다.
 
 ## 기타
 
