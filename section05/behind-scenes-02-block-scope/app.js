@@ -1,22 +1,8 @@
-// var name = 'jun';
-
-// if (name === 'jun') {
-//   // var hobbies = ['Sports', 'Cooking']; 전역변수
-//   let hobbies = ['Sports', 'Cooking'];
-//   console.log(hobbies);
-// }
-
-// function greet() {
-//   var age = 30;
-//   var name = 'max';
-//   console.log(name, age, hobbies);
-// }
-
-// console.log(name, hobbies);
-
-// greet();
-
-const userName = 'jun';
-let undefined = 5;
-
-console.log(userName);
+function getName() {
+  return prompt('이름을 입력하세요.', '');
+}
+function greet() {
+  const userName = getName();
+  console.log('hello ' + userName);
+}
+greet();
