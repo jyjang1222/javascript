@@ -16,6 +16,7 @@
 
 // greet();
 
-console.log(userName);
+const userName = 'jun';
+let undefined = 5;
 
-let userName = 'jun';
+console.log(userName);
