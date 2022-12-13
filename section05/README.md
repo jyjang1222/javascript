@@ -115,3 +115,77 @@ greet(); //바로 greet 줄이 실행된다.
 7. 스택에서는 맨 위에 있는 항목이 항상 현재 실행중인 항목이 된다.
 8. 스택에서 스크립트의 흐름을 볼수 있다는 의미가 자바스크립트는 단일스레드이며 한번에 하나의 작업만을 수행한다는 의미이다. 이는 함수의 실행 순서를 보장하고 모든 함수가 어떤 함수와 관련되었는지를 알수있게 해준다.
 9. 브라우저에는 힙과 스택외에 이벤트리스너를 관리하는 이벤트루프도 있다. 추후에 학습예정..
+
+## 데이터의 기본형과 참조형
+
+### 기본형 데이터 타입
+
+- String, Number, Boolean, null, undefined, symbol
+- 일반적으로 스택이라는 메모리 공간에 저장된다.
+- 변수는 값을 저장하며 복사한다는 것은 새로운 변수에 할당하는 것을 의미한다.
+
+### 참조형 데이터 타입
+
+```javascript
+let hobbies = ['sports'];
+let newHobbies = hobbies;
+hobbies.push('cooking');
+console.log(newHobbies); // ['sports', 'cooking']
+```
+
+- array, object
+- 힙이라는 메모리 공간에 저장된다.
+- 변수는 값이 아닌 메모리 주소의 위치를 저장한다.
+- 변수를 복사한다는 것은 새로운 변수에 같은 주소를 할당하는 것을 의미한다.
+
+## 가비지 컬렉션 & 메모리 관리
+
+- 모든 자바스크립트 엔진에는 가비지컬렉터(garbage collector)를 가지고 있다.
+
+### 가비지컬렉터의 역할
+
+- 사용(참조)되지 않은 객체에 대한 힙 메모리를 주기적으로 체크하여 메모리에서 제거한다.
+
+```javascript
+let person = { name: 'Max' }; // 해당 객체의 주소를 참조하는 변수가 없기때문에 메모리에서 제거됨
+person = null; // 새로운 값이 할당
+```
+
+### 메모리 누수란
+
+- 더이상 사용되지 않는 객체임에도 불구하고 해당 객체가 참조되고 있는 경우에는 가비지 컬렉터로 메모리에서 제거가 되지않는다.
+
+```javascript
+// case1
+const addListenerBtn = document.getElementById('add-listener-btn');
+const clickableBtn = document.getElementById('clickable-btn');
+
+function printMessage() {
+  const value = messageInput.value;
+  console.log(value || 'Clicked me!');
+}
+
+function addListener() {
+  clickableBtn.addEventListener('click', printMessage);
+}
+
+addListenerBtn.addEventListener('click', addListener);
+```
+
+- addListenerBtn을 계속 클릭하여 addListener를 여러번 호출한다해서 printMessage함수를 여러번 호출할수 없다.
+- 브라우저는 이전에 사용한 함수를 재호출 하는 경우, 새로운 리스너를 만드는 대신에 기존 리스너를 새로운 리스너로 교체한다.
+
+```javascript
+// case2 메모리누수 예시
+function addListener() {
+  clickableBtn.addEventListener('click', function () {
+    const value = messageInput.value;
+    console.log(value || 'Clicked me!');
+  });
+}
+//
+addListenerBtn.addEventListener('click', addListener);
+```
+
+- 위의 예시는 익명함수로 addListener를 호출할때마다 계속 새로운 함수가 생성되고 이는 메모리에 쌓이게되며 이는 가비지컬렉터가 제거할수없어 메모리누수를 야기한다.
+- 매우 드문 경우지만 주의해야한다.
