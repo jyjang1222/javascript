@@ -147,3 +147,79 @@ subtractUp(4,67,43,5)
 - ...의 대상은 항상 마지막 매개변수여야 한다.
 - arguments는 함수안에서만 사용할 수 있고 Rest연산자와 동일한 기능을 한다. 
 - arguments는 화살표함수에서는 작동이 안되기때문에 사용하지 않는 것이 좋다.
+
+## 함수내에서 함수 생성하기
+```javascript
+const sumUp = (...numbers) => {
+  const validateNumber = (number) => {
+    return isNaN(number) ? 0 : number;
+  };
+  let sum = 0;
+  for (const i of numbers) {
+    sum += validateNumber(i);
+  }
+  return sum;
+};
+console.log(sumUp(1, 2, 3, 'abcd'));
+```
+
+- 당장은 함수안에 함수를 생성하는 경우는 잘 없지만 이런 사례도 있으니 이런게 있다는 것 정도만 알아두자..
+
+## 콜백 함수
+
+```javascript
+const sumUp = (resultHandler, ...numbers) => {
+  const validateNumber = (number) => {
+    return isNaN(number) ? 0 : number;
+  };
+  let sum = 0;
+  for (const i of numbers) {
+    sum += validateNumber(i);
+  }
+  resultHandler(sum);
+};
+
+const showResult = (result) => {
+  console.log('모든 숫자의 합은 ' + result);
+};
+
+sumUp(showResult, 1, 5, 10, -3, 6, 10);
+```
+
+- 콜백함수는 함수내에서 일어나는 일을 명시하기 위함(추상화)이다.
+
+### 콜백함수 미사용
+
+```javascript
+const repeatNoCallback = num => {
+    for (let i = 0; i < num; i++) {
+        printString('hello world');
+    }
+}
+
+const printString = string => {
+    console.log(string);
+}
+
+repeatNoCallback(5);
+```
+
+- 만약 출력하는 동작을 다른 동작으로 변경한다면 printString부분을 모두 고쳐야한다.
+
+### 콜백함수 사용
+
+```javascript
+const repeatCallback = (num, callback) => {
+    for (let i = 0; i < num; i++) {
+        callback("hello world");
+    }
+}
+
+const printString = string => {
+    console.log(string);
+}
+
+repeatYesCallback(5, printString);
+```
+
+- 로직의 일부를 콜백함수로 넘겨받아서 외부로 뺀 printString만 고치면된다.
