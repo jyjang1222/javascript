@@ -92,10 +92,10 @@ const calc = (a, b) => {
   return a + b;
 }
 ```
-<code><pre>(arg1, arg2) => { ... }
+<pre><code>(arg1, arg2) => { ... }
 () => { ... }
 arg => { ... }
-</pre></code> 
+</code></pre>
 
 - function 키워드를 대체 한다.
 - 화살표함수를 썼을때의 장점은 조금이라도 코드가 줄어든다..
