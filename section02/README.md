@@ -254,13 +254,16 @@ const getWinner = function(playerCho, comCho) {
     res = RES_PLAYER_WIN;
   }
   return res;
+}
 ```
 
 - 리팩터링 이후의 코드
 
 ```javascript
-if (playerCho === comCho) {
-    res = RES_DRAW;
+const getWinner = function(playerCho, comCho) {
+  let res = RES_COM_WIN;
+  if (playerCho === comCho) {
+      res = RES_DRAW;
   } else if (
     playerCho === SCISSORS && comCho === PAPER ||
     playerCho === ROCK && comCho === SCISSORS ||
