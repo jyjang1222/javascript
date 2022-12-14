@@ -69,9 +69,7 @@ startGameBtn.addEventListener('click', function () {
 });
 // 뒤에서 정의된 함수는 호출시 새로운 함수가 계속 생성된다
 // 뒤에 ()가 없으니 스크립트실행시에 바로 호출되지는 않는다.
-startGameBtn.addEventListener(
-  'click',
-  (function () {
+startGameBtn.addEventListener('click', (function () {
     console.log('Game is starting...');
   })()
 );
