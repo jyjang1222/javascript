@@ -128,7 +128,7 @@ const sumUp = (...numbers) => {
   }
   return sum;
 };
-
+// Rest매개변수의 기능이 추가 되기전에 쓰이던 방법..
 const subtractUp = function() {
   let calc = 0;
   for (const i of arguments) {
@@ -145,6 +145,5 @@ subtractUp(4,67,43,5)
 - 여러 인수로 함수를 호출해야 할 때 사용
 - 매개변수 앞에 ...을 추가해서 함수 안에 배열을 설계할 수 있다.
 - ...의 대상은 항상 마지막 매개변수여야 한다.
-- arguments 키워드는 Rest매개변수의 기능이 추가 되기전에 쓰이던 구문이다.
 - arguments는 함수안에서만 사용할 수 있고 Rest연산자와 동일한 기능을 한다. 
 - arguments는 화살표함수에서는 작동이 안되기때문에 사용하지 않는 것이 좋다.
