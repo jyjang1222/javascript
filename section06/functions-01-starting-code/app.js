@@ -34,7 +34,7 @@ const getComChoice = function() {
   }
 };
 
-const getWinner = function(playerCho, comCho) {
+const getWinner = (playerCho, comCho) => {
   let res = RES_COM_WIN;
   // if (playerCho === comCho) {
   //   res = RES_DRAW;
@@ -57,7 +57,7 @@ const getWinner = function(playerCho, comCho) {
   return res;
 };
 
-startGameBtn.addEventListener('click', function () {
+startGameBtn.addEventListener('click', () => {
   if (gameIsRunning) {
     return;
   }

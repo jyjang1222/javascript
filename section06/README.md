@@ -80,3 +80,22 @@ startGameBtn.addEventListener('click', (function () {
 - 이벤트리스너 또는 함수에서 또 다른 함수를 참조하는 경우에 잘 쓰인다.
 - 함수를 익명으로 정의했을때의 단점은 오류가 발생했을때 'HTMLElement.<anonymous>'로 이름없는 함수의 오류가 나온다.
 - 익명함수는 함수명을 생략가능하지만 오류가 발생했을 때를 대비하여 이름을 작성하는 것을 고려할 수 있다.
+
+## 화살표 함수
+```javascript
+const add = function(a, b) {
+  return a + b;
+}
+const add2 = (a, b) => a + b; //표현식이 하나인경우 중괄호 생략가능
+const calc = (a, b) => {
+  a *= 2;
+  return a + b;
+}
+```
+<code><pre>(arg1, arg2) => { ... }
+() => { ... }
+arg => { ... }
+</pre></code> 
+
+- function 키워드를 대체 한다.
+- 화살표함수를 썼을때의 장점은 조금이라도 코드가 줄어든다..
