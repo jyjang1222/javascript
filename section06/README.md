@@ -91,6 +91,7 @@ const calc = (a, b) => {
   a *= 2;
   return a + b;
 }
+const loadPerson = pName => ({name: pName });
 ```
 <pre><code>(arg1, arg2) => { ... }
 () => { ... }
@@ -99,3 +100,4 @@ arg => { ... }
 
 - function 키워드를 대체 한다.
 - 화살표함수를 썼을때의 장점은 조금이라도 코드가 줄어든다..
+- 함수가 객체를 반활할때는 구문이 겹쳐서 추가 괄호()가 필요하다.
