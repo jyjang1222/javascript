@@ -82,6 +82,7 @@ startGameBtn.addEventListener('click', (function () {
 - 익명함수는 함수명을 생략가능하지만 오류가 발생했을 때를 대비하여 이름을 작성하는 것을 고려할 수 있다.
 
 ## 화살표 함수
+
 ```javascript
 const add = function(a, b) {
   return a + b;
@@ -101,3 +102,49 @@ arg => { ... }
 - function 키워드를 대체 한다.
 - 화살표함수를 썼을때의 장점은 조금이라도 코드가 줄어든다..
 - 함수가 객체를 반활할때는 구문이 겹쳐서 추가 괄호()가 필요하다.
+
+## 함수의 기본 인자
+
+```javascript
+const add2 = (a, b = 0, c = 0) => a + b + c;
+add2(1); // 1
+const add = (a, b = a < 0 ? -a : a) => a + b;
+add(-1); // 0
+```
+
+- 자바스크립트는 함수를 호출할 때 인수의 갯수와 매개변수의 갯수를 달리해도 오류가 발생하지 않는다.
+- 매개변수에 기본 인수를 설정할 수 있다.
+- 기본인수는 인수가 **undefined**인 경우에만 사용된다. (다른 falsy X)
+- 보통 기본인수는 뒤쪽 매개변수에 할당하게 된다. 왜냐하면 인수가 전달되는 순서는 바뀌지않아서 호출할때 뒤의 인수는 생략할수 있기 때문이다.
+
+## Rest 매개변수
+
+```javascript
+// 들어올 인수의 갯수를 모를때..
+const sumUp = (...numbers) => {
+  let sum = 0;
+  for (const i of numbers) {
+    sum += i;
+  }
+  return sum;
+};
+
+const subtractUp = function() {
+  let calc = 0;
+  for (const i of arguments) {
+    calc -= i;
+  }
+  return calc;
+};
+
+sumUp(1, 5, 10, -3, 6, 10);
+sumUp(1, 5, 10, -3, 6, 10, 25, 28);
+subtractUp(4,67,43,5)
+```
+
+- 여러 인수로 함수를 호출해야 할 때 사용
+- 매개변수 앞에 ...을 추가해서 함수 안에 배열을 설계할 수 있다.
+- ...의 대상은 항상 마지막 매개변수여야 한다.
+- arguments 키워드는 Rest매개변수의 기능이 추가 되기전에 쓰이던 구문이다.
+- arguments는 함수안에서만 사용할 수 있고 Rest연산자와 동일한 기능을 한다. 
+- arguments는 화살표함수에서는 작동이 안되기때문에 사용하지 않는 것이 좋다.

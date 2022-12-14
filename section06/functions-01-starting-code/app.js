@@ -10,7 +10,7 @@ const RES_DRAW = 'draw';
 
 let gameIsRunning = false;
 
-const getPlayerChoice = function () {
+const getPlayerChoice = () => {
   const selection = prompt(`${SCISSORS}, ${ROCK}, ${PAPER} 중 하나를 입력하세요.`, '');
   if (
     selection !== SCISSORS &&
@@ -18,7 +18,7 @@ const getPlayerChoice = function () {
     selection !== PAPER
     ) {
     alert(`잘못입력했습니다. ${DEFAULT_USER_CHOICE}가 선택됩니다.`);
-    return DEFAULT_USER_CHOICE;
+    return;
   }
   return selection;
 };
@@ -34,17 +34,12 @@ const getComChoice = function() {
   }
 };
 
-const getWinner = (playerCho, comCho) => {
+const getWinner = (
+  comCho,
+  playerCho = comCho === ROCK ? PAPER : DEFAULT_USER_CHOICE
+  //com이 바위면 플레이어는 자동으로 보를 선택
+  ) => {
   let res = RES_COM_WIN;
-  // if (playerCho === comCho) {
-  //   res = RES_DRAW;
-  // } else if (playerCho === SCISSORS && comCho === PAPER) {
-  //   res = RES_PLAYER_WIN;
-  // } else if (playerCho === ROCK && comCho === SCISSORS) {
-  //   res = RES_PLAYER_WIN;
-  // } else if (playerCho === PAPER && comCho === ROCK) {
-  //   res = RES_PLAYER_WIN;
-  // }
   if (playerCho === comCho) {
     res = RES_DRAW;
   } else if (
@@ -65,7 +60,13 @@ startGameBtn.addEventListener('click', () => {
   console.log('Game is starting...');
   const playerChoice = getPlayerChoice();
   const comChoice = getComChoice();
-  const winner = getWinner(playerChoice, comChoice);
-  console.log(`player: ${playerChoice} com: ${comChoice} winner: ${winner}`);
+  let winner;
+  if (playerChoice) {
+    winner = getWinner(comChoice, playerChoice);
+  } else {
+    winner = getWinner(comChoice);
+  }
+  console.log(`player: ${playerChoice || DEFAULT_USER_CHOICE} com: ${comChoice} winner: ${winner}`);
   gameIsRunning = false;
 });
+
