@@ -66,14 +66,14 @@ const multiply = function (a, b) {
 ```javascript
 startGameBtn.addEventListener('click', function () {
   console.log('Game is starting...');
-});
+}); //함수안에 함수를 정의
 // 뒤에서 정의된 함수는 호출시 새로운 함수가 계속 생성된다
 // 뒤에 ()가 없으니 스크립트실행시에 바로 호출되지는 않는다.
 startGameBtn.addEventListener('click', (function () {
     console.log('Game is starting...');
   })()
 );
-// 즉시실행하고자 한다면 뒤에 ()를 붙여준다.
+// 즉시실행하고자 한다면 함수를 ()로 감싼뒤에 ()를 붙여준다.
 ```
 
 - 익명함수를 쓰는 이유는 가령 코드를 봤을때 참조한 변수를 찾을 수고가 사라지게 된다.

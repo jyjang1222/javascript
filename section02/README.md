@@ -242,57 +242,34 @@ currentResult = currentResult.toString() + parseInt(userInput.value);
 - 리팩터링 이전의 코드
 
 ```javascript
-const defaultResult = 0;
-let currentResult = defaultResult;
-
-function getUserNumberInput() {
-  return parseInt(usrInput.value);
-}
-
-function add() {
-  const enteredNumber = getUserNumberInput();
-  const calcDescription = `${currentResult} + ${enteredNumber}`;
-  currentResult = currentResult + enteredNumber;
-  outputResult(currentResult, calcDescription);
-}
-
-function subtract() {
-  const enteredNumber = getUserNumberInput();
-  const calcDescription = `${currentResult} - ${enteredNumber}`;
-  currentResult = currentResult - enteredNumber;
-  outputResult(currentResult, calcDescription);
-}
+const getWinner = function(playerCho, comCho) {
+  let res = RES_COM_WIN;
+  if (playerCho === comCho) {
+    res = RES_DRAW;
+  } else if (playerCho === SCISSORS && comCho === PAPER) {
+    res = RES_PLAYER_WIN;
+  } else if (playerCho === ROCK && comCho === SCISSORS) {
+    res = RES_PLAYER_WIN;
+  } else if (playerCho === PAPER && comCho === ROCK) {
+    res = RES_PLAYER_WIN;
+  }
+  return res;
 ```
 
 - 리팩터링 이후의 코드
-  - 반복되는 calcDescription 계산로그 생성과, outputResult() 계산로그 및 결과 출력을 하나로 합침
 
 ```javascript
-const defaultResult = 0;
-let currentResult = defaultResult;
-
-function getUserNumberInput() {
-  return parseInt(usrInput.value);
-}
-
-function createAndWriteOutput(operater, resultBeforeCalc, calcNumber) {
-  const calcDescription = `${resultBeforeCalc} ${operater} ${calcNumber}`;
-  outputResult(currentResult, calcDescription);
-}
-
-function add() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult + enteredNumber;
-  createAndWriteOutput('+', initialResult, enteredNumber);
-}
-
-function subtract() {
-  const enteredNumber = getUserNumberInput();
-  const initialResult = currentResult;
-  currentResult = currentResult - enteredNumber;
-  createAndWriteOutput('-', initialResult, enteredNumber);
-}
+if (playerCho === comCho) {
+    res = RES_DRAW;
+  } else if (
+    playerCho === SCISSORS && comCho === PAPER ||
+    playerCho === ROCK && comCho === SCISSORS ||
+    playerCho === PAPER && comCho === ROCK
+    ) {
+    res = RES_PLAYER_WIN
+  }
+  return res;
+};
 ```
 
 ## 주석
