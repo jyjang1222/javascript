@@ -265,12 +265,10 @@ function calculate(operation) {
 // calculate가 즉시실행돼서 인자를 전달할수 없다..
 // addBtn.addEventListener('click', calculate('ADD'));
 // addBtn.addEventListener('click', calculate('SUBTARCT'));
+
 // bind메서드를 사용해서 즉시실행되지 않기 때문에 인자를 전달 가능
 addBtn.addEventListener('click', calculate.bind(this, 'ADD'));
 addBtn.addEventListener('click', calculate.bind(this, 'SUBTRACT'));
 ```
 
 - bind() 메서드를 사용해서 즉시실행하지않고 인자를 전달해서 특정 시점에 함수를 실행하고 싶을때도 사용된다..
-
-## call() & apply()
-
