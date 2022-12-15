@@ -2,7 +2,7 @@
 
 ## 함수의 특징
 
-- 함수도 하나의 객체이다.
+- 함수도 하나의 객체이다. (함수에 관련된 메서드를 사용가능 .bind())
 
 ## 매개변수와 인자
 
@@ -167,27 +167,6 @@ console.log(sumUp(1, 2, 3, 'abcd'));
 
 ## 콜백 함수
 
-```javascript
-const sumUp = (resultHandler, ...numbers) => {
-  const validateNumber = (number) => {
-    return isNaN(number) ? 0 : number;
-  };
-  let sum = 0;
-  for (const i of numbers) {
-    sum += validateNumber(i);
-  }
-  resultHandler(sum);
-};
-
-const showResult = (result) => {
-  console.log('모든 숫자의 합은 ' + result);
-};
-
-sumUp(showResult, 1, 5, 10, -3, 6, 10);
-```
-
-- 콜백함수는 함수내에서 일어나는 일을 명시하기 위함(추상화)이다.
-
 ### 콜백함수 미사용
 
 ```javascript
@@ -204,8 +183,6 @@ const printString = string => {
 repeatNoCallback(5);
 ```
 
-- 만약 출력하는 동작을 다른 동작으로 변경한다면 printString부분을 모두 고쳐야한다.
-
 ### 콜백함수 사용
 
 ```javascript
@@ -219,7 +196,58 @@ const printString = string => {
     console.log(string);
 }
 
-repeatYesCallback(5, printString);
+repeatCallback(5, printString);
 ```
 
-- 로직의 일부를 콜백함수로 넘겨받아서 외부로 뺀 printString만 고치면된다.
+- 자바스크립트는 함수를 인자로 받는 것이 가능하며 이를 콜백함수라 부른다.
+
+## bind() 메서드
+
+```javascript
+const combine = (resultHandler, operation, ...numbers) => {
+  const validateNumber = (number) => {
+    return isNaN(number) ? 0 : number;
+  };
+  let sum = 0;
+  for (const i of numbers) {
+    if (operation === 'ADD') {
+      sum += validateNumber(i);
+    } else {
+      sum -= validateNumber(i);
+    }
+  }
+  // bind메서드가 먼저 실행되기 때문에 '모든 수를 더하면:' 이 첫인자로 오고 그 다음 인자로 sum이 오게된다..
+  resultHandler(sum);
+};
+
+const showResult = (messageText, result) => {
+  console.log(messageText + ' ' + result);
+};
+
+// ()가 없기때문에 showResult를 즉시실행하진 않는다.
+combine(showResult.bind(this, '모든 수를 더하면:'), 'ADD', 1, 5, 10, -3, 6, 10);
+combine(showResult.bind(this, '모든 수를 빼면:'), 'SUBTRACT', 1, 5, 10, -3, 6, 10);
+```
+- bind() 메소드가 호출되면 새로운 함수를 생성한다. 
+- 받게되는 첫 인자의 값은 this 키워드를 설정하고, 이어지는 인자들은 바인드된 함수의 인수에 제공된다.
+- bind() 메서드는 최소 두 개의 인자를 사용한다.
+
+### bind() 예제
+<pre><code>Function.bind(thisArg, [arg1, arg2, ...])</code></pre>
+```javascript
+mySite = {
+  name: 'webisfree',
+  getSite: function() {
+    return this.name;
+  }
+}
+mySite.getSite(); // 'webisfree'
+
+getYourSite = mySite.getSite;
+getYourSite(); // undefined
+
+getMySite = getYourSite.bind(mySite);
+getMySite(); // 'webisfree'
+```
+
+- bind()를 사용하면 this가 어떤 인스턴스를 가리킬 것인지 선택할 수 있다.
