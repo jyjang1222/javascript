@@ -234,6 +234,7 @@ combine(showResult.bind(this, '모든 수를 빼면:'), 'SUBTRACT', 1, 5, 10, -3
 
 ### bind() 예제
 <pre><code>Function.bind(thisArg, [arg1, arg2, ...])</code></pre>
+
 ```javascript
 mySite = {
   name: 'webisfree',
