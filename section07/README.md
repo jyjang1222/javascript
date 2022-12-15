@@ -62,6 +62,15 @@ document.querySelector('ul li:last-of-type');
 - querySelector 는 css선택자에 대응하는 첫번째 요소를 반환한다.
 - 요소를 찾을 수 없는 경우에는 null을 반환한다.
 
+### querySelectorAll()
+
+```javascript
+document.querySelectorAll('.list-item');
+```
+
+- querySelectorAll 은 css선택자에 대응하는 모든 요소를 **NodeList**로 반환한다.
+- 요소를 찾을 수 없는 경우에는 **빈 NodeList**을 반환한다.
+
 ### getElementById()
 
 ```javascript
@@ -72,16 +81,114 @@ document.getElementById('main-title');
 - getElementById 는 특정 id값을 가진 요소를 반환한다.
 - 요소를 찾을 수 없는 경우에는 null을 반환한다.
 
-### getElementByClassName()
-
-- 상당히 오래된 메서드지만 여전히 지원되고있다.
-
-### querySelectorAll()
-
+### getElementsByClassName()
 ```javascript
-document.querySelectorAll('.list-item');
+document.getElementsByClassName('list-item');
 ```
 
-- querySelectorAll 은 css선택자에 대응하는 모든 요소를 **NodeList**로 반환한다.
-- 요소를 찾을 수 없는 경우에는 빈**NodeList**을 반환한다.
+- 클래스명과 일치하는 요소를 가져와서 **HTMLCollection**을 반환한다.
+- 일치하는 요소가 없으면 **빈 HTMLCollection**을 반환한다.
 
+### getElementsByTagName()
+```javascript
+document.getElementsByClassName('li');
+```
+
+- 클래스명과 일치하는 요소를 가져와서 **HTMLCollection**을 반환한다.
+- 일치하는 요소가 없으면 **빈 HTMLCollection**을 반환한다.
+
+## HTMLCollection vs NodeList
+
+```html
+<!DOCTYPE html>
+  <head>
+    <style>
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="fruits">
+      <li class="red">Apple</li>
+      <li class="red">Banana</li>
+      <li class="red">Orange</li>
+    </ul>
+  </body>
+</html>
+```
+
+### HTMLCollection
+- HTMLCollection은 **getElementsByClassName** 과 **getElementsByTagName** 메서드를 통해 얻을수 있는 유사 배열 객체이다.
+- HTMLCollection은 일반적인 배열과 다르게 내부 요소(노드)에 변화가 생기면 이를 즉시 반영한다.
+```javascript
+const $fruits = document.getElementsByClassName("red");
+
+for (let i = 0; i < $fruits.length; i++) {
+// li 요소들의 클래스명을 "blue" 로 변경합니다.
+$fruits[i].className = "blue";
+}
+```
+```javascript
+// A. class="red" 인 요소의 HTMLCollection 을 획득합니다.
+// $fruits = [li.red, li.red, li.red]
+const $fruits = document.getElementsByClassName("red");
+
+// B. 1번째 루프 : HTMLCollection의 0번째 노드의 클래스명을 "blue" 로 변경합니다.
+// 따라서 살아 있는 객체인 $fruits의 1번째 요소는 HTMLCollection에서 제거됩니다.
+// $fruits = [li.red, li.red], i = 1
+
+// C. 2번째 루프 : i는 1이므로 [li.red, li.red]의 두 번째 요소의 클래스명 "blue"로 변경합니다.
+// $fruits = [li.red], i = 1
+// 따라서 $fruits에는 [li.red]가 하나 남은 채로 루프가 종료됩니다.
+for (let i = 0; i < $fruits.length; i++) {
+  $fruits[i].className = "blue";
+}
+```
+```html
+<!-- 결과값 -->
+<ul id="fruits">
+    <li class="blue">Apple</li>
+    <li class="red">Banana</li>
+    <li class="blue">Orange</li>
+</ul>
+```
+- 이처럼 HTMLCollection의 내부 요솓르을 실시간으로 감지해 반영하는 특성으로 HTMLCollection에 반복문을 사용할 때는 주의해야한다.
+
+### NodeList
+
+- NodeList 객체는 **querySelectorAll** 메서드가 반환하는 객체로 HTMLCollection이 갖고 있던 부작용을 해결하기 위해 등장했다
+- 요소(노드)의 변경을 실시간으로 감지하지 않는다는 특징을 가진 유사 배열 객체이다.
+
+```javascript
+const $fruits = document.querySelectorAll(".red");
+
+for (let i = 0; i < $fruits.length; i++) {
+  $fruits[i].className = "blue";
+}
+```
+```html
+<!-- 모두 blue로 변경된 모습 -->
+<ul id="fruits">
+    <li class="blue">Apple</li>
+    <li class="blue">Banana</li>
+    <li class="blue">Orange</li>
+</ul>
+```
+- 하지만 항상 querySelectorAll 이 옳은 것은 아니다.
+- NodeList 역시 항상 정적인 객체임을 보장하지는 않는데, childNodes 속성 통해 얻은 NodeList는 HTMLCollection과 동일하게 요소노드들을 실시간으로 감지해서 이런 경우에는 NodeList 역시 HTMLCollection 이 갖고 있던 부작용을 그대로 갖게 된다..
+
+### 해결법
+
+```javascript
+const $fruits = document.querySelectorAll(".red");
+const fruits = Array.from($fruits)
+fruits.forEach(fruitDom => fruitDom.className = "blue")
+// 또는 [$fruits].forEach(fruitDom => fruitDom.className = "blue")
+```
+
+- 가장 좋은 해결책은 getElementsByClassName 이나 querySelectorAll 을 사용해 얻은 DOM 컬렉션을 배열로 치환하는 방법이다.
+- Array.from 또는 분해 할당을 사용해 컬렉션을 배열로 치환하면 언제나 내부 요소가 정적임이 보장됨과 동시에, forEach 등 배열의 프로토타입이 제공하는 여러 고차 함수를 활용할 수 있다.
