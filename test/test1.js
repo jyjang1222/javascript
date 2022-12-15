@@ -212,7 +212,7 @@ console.log(5);
 
 arr = [1,3,3,6,5,6,1];
 
-cnt = 0
+cnt = 0;
 while (true) {
     r = parseInt(Math.random() * 6 + 1);
 

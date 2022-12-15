@@ -38,3 +38,50 @@ HTML  - Element Node
 - 결국 브라우저는 HTML 요소들의 부모자식 관계로 된 노드트리를 만들어 추적한다.
 - 브라우저는 HTML 태그를 가져와서 객체를 생성할 뿐만 아니라 텍스트 노드도 생성한다.
 - | 는 줄바꿈을 표시하고 _ 공백을 표시한다.
+
+## DOM 노드에 쿼리하기
+
+### head, body, html 선택하기
+
+```javascript
+document.body // <body> 요소 노드를 선택
+document.head // <head> 요소 노드를 선택
+document.documentElement // <html> 요소 노드를 선택
+```
+
+### querySelector()
+
+```javascript
+// document의 자식노드 중 css선택자에 대응하는 첫번째 요소를 찾는다
+document.querySelector('header');
+document.querySelector('.list-item');
+document.querySelector('#main-title');
+document.querySelector('ul li:last-of-type');
+```
+
+- querySelector 는 css선택자에 대응하는 첫번째 요소를 반환한다.
+- 요소를 찾을 수 없는 경우에는 null을 반환한다.
+
+### getElementById()
+
+```javascript
+// document의 자식노드 중 id가 main-title을 찾는다
+document.getElementById('main-title');
+```
+
+- getElementById 는 특정 id값을 가진 요소를 반환한다.
+- 요소를 찾을 수 없는 경우에는 null을 반환한다.
+
+### getElementByClassName()
+
+- 상당히 오래된 메서드지만 여전히 지원되고있다.
+
+### querySelectorAll()
+
+```javascript
+document.querySelectorAll('.list-item');
+```
+
+- querySelectorAll 은 css선택자에 대응하는 모든 요소를 **NodeList**로 반환한다.
+- 요소를 찾을 수 없는 경우에는 빈**NodeList**을 반환한다.
+
