@@ -1,4 +1,1 @@
-const items = document.getElementsByClassName('red');
-for (const i of items) {
-    i.className = 'blue';
-}
+const h1 = document.querySelector('#main-title');

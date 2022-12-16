@@ -39,7 +39,7 @@ HTML  - Element Node
 - 브라우저는 HTML 태그를 가져와서 객체를 생성할 뿐만 아니라 텍스트 노드도 생성한다.
 - | 는 줄바꿈을 표시하고 _ 공백을 표시한다.
 
-## DOM 노드에 쿼리하기
+## DOM 요소 노드 탐색하기
 
 ### head, body, html 선택하기
 
@@ -192,3 +192,25 @@ fruits.forEach(fruitDom => fruitDom.className = "blue")
 
 - 가장 좋은 해결책은 getElementsByClassName 이나 querySelectorAll 을 사용해 얻은 DOM 컬렉션을 배열로 치환하는 방법이다.
 - Array.from 또는 분해 할당을 사용해 컬렉션을 배열로 치환하면 언제나 내부 요소가 정적임이 보장됨과 동시에, forEach 등 배열의 프로토타입이 제공하는 여러 고차 함수를 활용할 수 있다.
+
+## DOM 속성
+
+```javascript
+const h1 = document.querySelector('#main-title');
+h1.textContent;
+// 'header'
+h1.className;
+// ''
+h1.id;
+// 'main-title'
+h1.textContent = 'New Header';
+h1.className = 'title';
+h1.style.color = 'gold';
+h1.style.backgroundColor = 'dodgerblue';
+// console.dir(h1);
+```
+
+- 변수에 탐색한 요소 노드를 할당할 수 있다.
+- 요소노드가 할당된 변수는 HTML요소에 관련된 DOM 속성을 사용할 수 있다.
+- 속성의 종류는 많고 mdn사이트나 console.dir 메서드를 활용하면 사용할 수 속성 목록을 조회 가능하다.
+
