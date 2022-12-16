@@ -253,16 +253,35 @@ body 는 li의 조상 이고 ul의 부모이자 조상이다
 ```
 - 자식(Child), 후손(Descendant), 부모(Parent), 조상(Ancestor)
 
-### 자식노드 탐색하기
+### 자식노드 선택하기
 
 ```javascript
 const ul = document.querySelector('ul');
-ul.children // 자식 중 요소 노드만을 선택
+ul.children // 자식 노드 중 요소 노드만을 선택 (텍스트 노드 제외)
 // HTMLCollection(3) [li.list-item.red, li.list-item.red, li.list-item.red]
 ul.childNodes // 모든 자식 노드를 선택
 // NodeList(7) [text, li.list-item.red, text, li.list-item.red, text, li.list-item.red, text]
-ul.firstChild //자식 노드들 중 첫째
-ul.firstElementChild //자식 요소 중 첫째
+ul.firstChild //자식 노드 중 첫째
+ul.firstElementChild //자식 요소 노드 중 첫째
 ul.lastChild
 ul.lastElementChild
 ```
+
+### 부모노드 선택하기
+
+```javascript
+const li = document.querySelector('li');
+
+li.parentNode // 부모 노드를 선택
+li.parentElement // 부모 요소 노드를 선택
+
+document.documentElement.parentElement // null
+document.documentElement.parentNode // > #document
+
+li.closest('body') // 아무 조상 중에서 인자로 넣은 요소 선택
+```
+
+- parentNode와 parentElement는 결과가 거의 동일하다. 요소 노드만이 자식 노드를 가질 수 있기 때문이다.
+- document.documentElement는 parentNode와 parentElement의 결과가 유일하게 다르다. 하지만 document.documentElement.parentNode 이런식으로 쓸일은 거의 없다..
+
+## 형제노드 선택하기
