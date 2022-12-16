@@ -33,10 +33,10 @@ HTML  - Element Node
 */
 ```
 - 브라우저는 HTML 코드를 분석해서 그에 대한 구조화된 객체 표현(DOM)을 생성한다.
-- 모든 HTML 요소에 대해 요소 노드(Element Node)가 생성된다.
+- 모든 HTML 요소에 대해 **요소 노드(Element Node)**가 생성된다.
 - 이 노드들간의 관계는 부모와 자식 노드로 불린다.
 - 결국 브라우저는 HTML 요소들의 부모자식 관계로 된 노드트리를 만들어 추적한다.
-- 브라우저는 HTML 태그를 가져와서 객체를 생성할 뿐만 아니라 텍스트 노드도 생성한다.
+- 브라우저는 HTML 태그를 가져와서 객체를 생성할 뿐만 아니라 **텍스트 노드**도 생성한다.
 - | 는 줄바꿈을 표시하고 _ 공백을 표시한다.
 
 ## DOM 요소 노드 선택하기
@@ -252,6 +252,8 @@ body 는 li의 조상 이고 ul의 부모이자 조상이다
 -->
 ```
 - 자식(Child), 후손(Descendant), 부모(Parent), 조상(Ancestor)
+- querySelector로 모든 요소 노드를 선택이 가능하지만 문서의 모든 요소를 탐색하기때문에 탐색 효율이 떨어진다.
+- 그리하여 querySelector로 모든 요소를 탐색하기 보다는 특정 노드를 선택하는 속성을 더 사용하는 것이 좋다.
 
 ### 자식노드 선택하기
 
@@ -285,3 +287,12 @@ li.closest('body') // 아무 조상 중에서 인자로 넣은 요소 선택
 - document.documentElement는 parentNode와 parentElement의 결과가 유일하게 다르다. 하지만 document.documentElement.parentNode 이런식으로 쓸일은 거의 없다..
 
 ### 형제노드 선택하기
+
+```javascript
+const ul = document.querySelector('ul');
+
+ul.previousSibling // > #text   바로 이전 형제 노드 선택
+ul.previousElementSibling // header   바로 이전 형제 요소 노드 선택
+ul.nextSibling // 바로 이후 형제 노드 선택
+ul.nextElementSibling // 바로 이후 형제 요소 노드 선택
+```
