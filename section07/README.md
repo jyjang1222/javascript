@@ -222,7 +222,6 @@ h1.style.backgroundColor = 'dodgerblue';
 - 한국어로는 둘다 속성으로 부를 수 있지만 구분할때는 속성(Attribute)과 프로퍼티(Property)로 부른다.
 - 속성(attribute)값을 바꾸면 프로퍼티값도 바뀌며 실시간 동기화가 이루어진다, 반대로도 마찬가지이다.
 - 속성(attribute)명과 프로퍼티명은 항상 동일하지는 않다.
-- input의 경우에는 input.value를 사용해 값을 변경해도 html속성에는 실시간동기화가 적용되지 않는다..
 
 ```html
 <input type="text" id="input" class="input-style" value="enter text..">
@@ -231,5 +230,9 @@ h1.style.backgroundColor = 'dodgerblue';
 const input = document.querySelector('input');
 input.id = 'inputId';  //html속성도 변경됨
 input.className = 'Input-Style';  //html속성도 변경됨
-input.value = 'Enter';  //html속성은 변경X
+input.value = 'New input text';  //UI와 프로퍼티는 바뀌지만 html속성은 바뀌지 않는다.
+input.setAttribute('value', 'New input text') //html속성값을 바꿀수 있으며 UI는 실시간변경이 되지않고 속성값도 변경하지 않는다.
+input.value = input.getAttribute('value');
 ```
+- 하지만 **value**의 경우에는 value 프로퍼티를 사용해 값을 변경해도 html속성에는 실시간 동기화가 적용되지 않는다.
+- 그래서 **setAttribute()** 메서드를 사용하여 html문서에도 변경사항을 적용해주거나 **getAttribute()** 메서드를 사용하여 프로퍼티에도 값을 적용해주면 된다.
