@@ -239,12 +239,30 @@ input.value = input.getAttribute('value');
 
 ## DOM 탐색(Traversing)
 ```html
-<div>
-    <p>A<span>test!</span></p>
-</div>
+<body>
+  <ul>
+    <li class="list-item red">item 1</li>
+    <li class="list-item red">item 2</li>
+    <li class="list-item red">item 3</li>
+  </ul>
+</body>
 <!--
-span 은 div의 후손 이고 p의 자식이다
-div 는 span의 조상 이고 p의 부모이다
+li 은 body의 후손 이고 ul의 자식이자 후손이다
+body 는 li의 조상 이고 ul의 부모이자 조상이다
 -->
 ```
 - 자식(Child), 후손(Descendant), 부모(Parent), 조상(Ancestor)
+
+### 자식노드 탐색하기
+
+```javascript
+const ul = document.querySelector('ul');
+ul.children // 자식 중 요소 노드만을 선택
+// HTMLCollection(3) [li.list-item.red, li.list-item.red, li.list-item.red]
+ul.childNodes // 모든 자식 노드를 선택
+// NodeList(7) [text, li.list-item.red, text, li.list-item.red, text, li.list-item.red, text]
+ul.firstChild //자식 노드들 중 첫째
+ul.firstElementChild //자식 요소 중 첫째
+ul.lastChild
+ul.lastElementChild
+```
