@@ -39,7 +39,7 @@ HTML  - Element Node
 - 브라우저는 HTML 태그를 가져와서 객체를 생성할 뿐만 아니라 텍스트 노드도 생성한다.
 - | 는 줄바꿈을 표시하고 _ 공백을 표시한다.
 
-## DOM 요소 노드 탐색하기
+## DOM 요소 노드 선택하기
 
 ### head, body, html 선택하기
 
@@ -130,7 +130,7 @@ const $fruits = document.getElementsByClassName("red");
 for (let i = 0; i < $fruits.length; i++) {
 // li 요소들의 클래스명을 "blue" 로 변경합니다.
 $fruits[i].className = "blue";
-}
+} 
 ```
 ```javascript
 // A. class="red" 인 요소의 HTMLCollection 을 획득합니다.
@@ -156,7 +156,7 @@ for (let i = 0; i < $fruits.length; i++) {
     <li class="blue">Orange</li>
 </ul>
 ```
-- 이처럼 HTMLCollection의 내부 요솓르을 실시간으로 감지해 반영하는 특성으로 HTMLCollection에 반복문을 사용할 때는 주의해야한다.
+- 이처럼 HTMLCollection의 내부 요소들을 실시간으로 감지해 반영하는 특성으로 HTMLCollection에 반복문을 사용할 때는 주의해야한다.
 
 ### NodeList
 
@@ -236,3 +236,15 @@ input.value = input.getAttribute('value');
 ```
 - 하지만 **value**의 경우에는 value 프로퍼티를 사용해 값을 변경해도 html속성에는 실시간 동기화가 적용되지 않는다.
 - 그래서 **setAttribute()** 메서드를 사용하여 html문서에도 변경사항을 적용해주거나 **getAttribute()** 메서드를 사용하여 프로퍼티에도 값을 적용해주면 된다.
+
+## DOM 탐색(Traversing)
+```html
+<div>
+    <p>A<span>test!</span></p>
+</div>
+<!--
+span 은 div의 후손 이고 p의 자식이다
+div 는 span의 조상 이고 p의 부모이다
+-->
+```
+- 자식(Child), 후손(Descendant), 부모(Parent), 조상(Ancestor)
