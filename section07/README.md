@@ -193,7 +193,7 @@ fruits.forEach(fruitDom => fruitDom.className = "blue")
 - 가장 좋은 해결책은 getElementsByClassName 이나 querySelectorAll 을 사용해 얻은 DOM 컬렉션을 배열로 치환하는 방법이다.
 - Array.from 또는 분해 할당을 사용해 컬렉션을 배열로 치환하면 언제나 내부 요소가 정적임이 보장됨과 동시에, forEach 등 배열의 프로토타입이 제공하는 여러 고차 함수를 활용할 수 있다.
 
-## DOM 속성
+## DOM 프로퍼티
 
 ```javascript
 const h1 = document.querySelector('#main-title');
@@ -210,7 +210,26 @@ h1.style.backgroundColor = 'dodgerblue';
 // console.dir(h1);
 ```
 
+- 생성된 DOM 객체는 자동으로 프로퍼티가 추가된다.
 - 변수에 탐색한 요소 노드를 할당할 수 있다.
 - 요소노드가 할당된 변수는 HTML요소에 관련된 DOM 속성을 사용할 수 있다.
 - 속성의 종류는 많고 mdn사이트나 console.dir 메서드를 활용하면 사용할 수 속성 목록을 조회 가능하다.
 
+## 속성(Attribute) vs 프로퍼티(Property)
+
+- HTML 코드에서 작성된 속성은 속성(Attribute)로 불린다.
+- 속성 혹은 프로퍼티(property)는 HTML 코드를 기반으로 생성된 객체에 저장된 값이다.
+- 한국어로는 둘다 속성으로 부를 수 있지만 구분할때는 속성(Attribute)과 프로퍼티(Property)로 부른다.
+- 속성(attribute)값을 바꾸면 프로퍼티값도 바뀌며 실시간 동기화가 이루어진다, 반대로도 마찬가지이다.
+- 속성(attribute)명과 프로퍼티명은 항상 동일하지는 않다.
+- input의 경우에는 input.value를 사용해 값을 변경해도 html속성에는 실시간동기화가 적용되지 않는다..
+
+```html
+<input type="text" id="input" class="input-style" value="enter text..">
+```
+```javascript
+const input = document.querySelector('input');
+input.id = 'inputId';  //html속성도 변경됨
+input.className = 'Input-Style';  //html속성도 변경됨
+input.value = 'Enter';  //html속성은 변경X
+```
