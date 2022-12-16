@@ -24,3 +24,71 @@ map1 = [0,0,0,0,1,0,0,0,0,1,1,0,0,0,1,1,0,1,0,0]
 map2 = [0,0,1,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,1]
 
 move = []
+
+let log = 0;
+let i = 0;
+let cnt1 = 0;
+let cnt2 = 0;
+
+// const chkMapAndWriteLog = (map, cnt) => {
+//     if (map[i] !== 0) {
+//         // count 체크
+//         for (let j = i; j < i + 2; j++) {
+//             if (map[j] === 1) {
+//                 cnt1 += 1
+//             }
+//         }
+//         // 로그작성
+//         if (cnt === 1) {
+//             log = 10;
+//         } else if (cnt === 2) {
+//             log = 20;
+//         }
+//         move.push(log);
+//         i += cnt1
+//     }
+// }
+
+while (i < map1.length) {
+    cnt1 = 0;
+    cnt2 = 0;
+
+    // map1 체크
+    if (map1[i] !== 0) {
+        // count 체크
+        for (let j = i; j < i + 2; j++) {
+            if (map1[j] === 1) {
+                cnt1 += 1
+            }
+        }
+        // 로그작성
+        if (cnt1 === 1) {
+            log = -10;
+        } else if (cnt1 === 2) {
+            log = -20;
+        }
+        move.push(log);
+        i += cnt1
+    }
+    
+    //map2 체크
+    if (map2[i] !== 0) {
+        // count 체크
+        for (let j = i; j < i + 2; j++) {
+            if (map2[j] === 1) {
+                cnt2 += 1
+            }
+        }
+        // 로그작성
+        if (cnt2 === 1) {
+            log = 10;
+        } else if (cnt2 === 2) {
+            log = 20;
+        }
+        move.push(log);
+        i += cnt2
+    }
+    i++
+}
+
+console.log(move)
