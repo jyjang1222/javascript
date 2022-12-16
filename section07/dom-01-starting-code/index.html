@@ -9,17 +9,20 @@
   <style>
     .red {color:red;}
     .blue {color:blue;}
+    .visible {display: block;}
+    .invisible {display: none;}
   </style>
 </head>
 <body>
   <header>
-    <h1 id="main-title">header</h1>
+    <h1 id="main-title" class="blue">header</h1>
   </header>
-  <ul>
+  <ul class="visible">
     <li class="list-item red">item <span>1</span></li>
     <li class="list-item red">item 2</li>
     <li class="list-item red">item 3</li>
   </ul>
+  <button>Toggle</button>
   <input type="text" id="input" class="input-style" value="enter text..">
 </body>
 </html>

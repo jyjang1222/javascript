@@ -252,8 +252,6 @@ body 는 li의 조상 이고 ul의 부모이자 조상이다
 -->
 ```
 - 자식(Child), 후손(Descendant), 부모(Parent), 조상(Ancestor)
-- querySelector로 모든 요소 노드를 선택이 가능하지만 문서의 모든 요소를 탐색하기때문에 탐색 효율이 떨어진다.
-- 그리하여 querySelector로 모든 요소를 탐색하기 보다는 특정 노드를 선택하는 속성을 더 사용하는 것이 좋다.
 
 ### 자식노드 선택하기
 
@@ -296,3 +294,38 @@ ul.previousElementSibling // header   바로 이전 형제 요소 노드 선택
 ul.nextSibling // 바로 이후 형제 노드 선택
 ul.nextElementSibling // 바로 이후 형제 요소 노드 선택
 ```
+
+## DOM 탐색 속성 vs 쿼리 메서드
+
+- querySelector로 모든 요소 노드를 선택이 가능하지만 문서의 모든 요소를 탐색하기때문에 탐색 효율은 떨어진다.
+- 하지만 그렇다고 탐색 속성을 많이쓰면 가독성이 떨어지거나 html요소가 변경되면 스크립트 코드도 바꿔야하는 불상사가 생길 수 도 있다.
+- html코드를 수정하더라도 관계가 보장될때 탐색 속성을 쓰는 것이 좋다.
+- 어쩔수없이 관계가 바뀐다면 js 코드도 수정해야한다.
+
+## DOM 요소 스타일링하기
+
+```javascript
+const ul = document.querySelector('ul');
+ul.style.backgroundColor = 'lightgreen';
+const h1 = document.querySelector('h1');
+h1.className = 'blue';
+const button = document.querySelector('button');
+button.addEventListener('click', () => {
+    ul.classList.toggle('visible');
+    ul.classList.toggle('invisible');
+})
+```
+
+1. style 속성을 사용해서 인라인 스타일 직접 추가 또는 수정하기
+2. className 프로퍼티를 이용해서 클래스이름을 직접 작성해 추가제거해서 스타일 적용하기
+3. classList객체의 메서드를 이용해서 css클래스들을 추가 혹은 제거하기
+
+- contains()
+    - 해당 클래스가 있는지 유무를 확인해서 true false 반환
+- add()
+    - 클래스 넣기
+- remove()
+    - 클래스 제거
+- toggle()
+    - 해당 클래스명이 있으면 제거하고 없으면 추가
+- replace(변경할클래스명, 치환할클래스명) 
