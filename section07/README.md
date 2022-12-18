@@ -329,3 +329,18 @@ button.addEventListener('click', () => {
 - toggle()
     - 해당 클래스명이 있으면 제거하고 없으면 추가
 - replace(변경할클래스명, 치환할클래스명) 
+
+## 요소를 추가하고 삽입하기
+
+1. 자바스크립트로 요소 노드의 innerHTML 프로퍼티를 이용해 HTML 코드를 문자열로 직접 작성해서 추가하기
+2. document객체의 createElement 메서드로 새로운 노드를 생성한후 삽입메서드를 이용해 수동으로 삽입하기
+
+### innerHTML프로퍼티로 요소 추가히기
+```javascript
+section.innerHTML = '<h2>New title</h2>'
+ul.innerHTML += '<li>item 4</li>'
+//li를 하나만 추가해도 추가한 li 요소 형제들의 콘텐츠를 다시 렌더링한다.
+```
+
+- 추가한것 외의 바뀌지않은 컨텐츠들을 다시 렌더링해서 성능면에서 좋지 않다
+- 추가하는 곳에 input같은 사용자입력값을 받는 태그가 있다면 사용자입력값이 초기화된다.
