@@ -53,14 +53,17 @@ document.documentElement // <html> 요소 노드를 선택
 
 ```javascript
 // document의 자식노드 중 css선택자에 대응하는 첫번째 요소를 찾는다
-document.querySelector('header');
+const header = document.querySelector('header'); //typeof(header) == object
 document.querySelector('.list-item');
 document.querySelector('#main-title');
 document.querySelector('ul li:last-of-type');
+header.querySelector('p');
 ```
-
-- querySelector 는 css선택자에 대응하는 첫번째 요소를 반환한다.
+<code>element.querySelector(selector)</code>
+- querySelector() 는 css선택자에 대응하는 첫번째 요소를 반환한다.
 - 요소를 찾을 수 없는 경우에는 null을 반환한다.
+- 변수에 해당 요소 노드의 주소를 할당할 수있다.
+- elem의 자식 요소 중 주어진 CSS 선택자에 대응하는 요소 모두를 반환한다
 
 ### querySelectorAll()
 
@@ -332,15 +335,39 @@ button.addEventListener('click', () => {
 
 ## 요소를 추가하고 삽입하기
 
-1. 자바스크립트로 요소 노드의 innerHTML 프로퍼티를 이용해 HTML 코드를 문자열로 직접 작성해서 추가하기
+1. 자바스크립트로 요소 노드의 프로퍼티나 메서드를 이용해 HTML 코드를 문자열로 직접 작성해서 추가하기
 2. document객체의 createElement 메서드로 새로운 노드를 생성한후 삽입메서드를 이용해 수동으로 삽입하기
 
-### innerHTML프로퍼티로 요소 추가히기
+### 요소노드의 innerHTML 프로퍼티로 요소 추가하기
 ```javascript
 section.innerHTML = '<h2>New title</h2>'
 ul.innerHTML += '<li>item 4</li>'
 //li를 하나만 추가해도 추가한 li 요소 형제들의 콘텐츠를 다시 렌더링한다.
 ```
 
-- 추가한것 외의 바뀌지않은 컨텐츠들을 다시 렌더링해서 성능면에서 좋지 않다
+- 지정 요소의 자식 요소로 추가된다.
+- 추가한것 외의 바뀌지않은 형제 컨텐츠들을 다시 렌더링해서 성능면에서 좋지 않다
 - 추가하는 곳에 input같은 사용자입력값을 받는 태그가 있다면 사용자입력값이 초기화된다.
+
+### 요소노드의 insertAdjacentHTML()로 요소 추가하기
+```html
+<!-- beforebegin -->
+<p>
+<!-- afterbegin -->
+foo
+<!-- beforeend -->
+</p>
+<!-- afterend -->
+```
+```javascript
+p.insertAdjacentHTML()
+```
+<code>element.insertAdjacentHTML(position, text)<code>
+
+- position에는 beforebegin, afterbegin, beforeend, afterend 만 사용가능하다.
+- innerHTML프로퍼티와 달리 이미 사용중인 요소들을 다시 렌더링하지 않는다.
+- HTML 코드를 문자열로 직접 작성해서 추가하는 방식은 유지보수에는 좋지않다.
+
+### createElement() 메서드로 요소 생성하기
+
+<code>let element = document.createElement(tagName[, options]);</code>
