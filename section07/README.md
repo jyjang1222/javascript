@@ -130,7 +130,7 @@ document.getElementsByClassName('li');
 
 ### HTMLCollection
 - HTMLCollection은 **getElementsByClassName** 과 **getElementsByTagName** 메서드를 통해 얻을수 있는 유사 배열 객체이다.
-- HTMLCollection은 일반적인 배열과 다르게 내부 요소(노드)에 변화가 생기면 이를 즉시 반영한다.
+- HTMLCollection은 일반적인 배열과 다르게 내부 요소(노드)에 변화가 생기면 이를 즉시 반영(**live**)한다.
 ```javascript
 const $fruits = document.getElementsByClassName("red");
 
@@ -163,12 +163,13 @@ for (let i = 0; i < $fruits.length; i++) {
     <li class="blue">Orange</li>
 </ul>
 ```
-- 이처럼 HTMLCollection의 내부 요소들을 실시간으로 감지해 반영하는 특성으로 HTMLCollection에 반복문을 사용할 때는 주의해야한다.
+- 이처럼 HTMLCollection의 내부 요소들을 실시간(live)으로 감지해 반영하는 특성으로 HTMLCollection에 반복문을 사용할 때는 주의해야한다.
 
 ### NodeList
 
 - NodeList 객체는 **querySelectorAll** 메서드가 반환하는 객체로 HTMLCollection이 갖고 있던 부작용을 해결하기 위해 등장했다
-- 요소(노드)의 변경을 실시간으로 감지하지 않는다는 특징을 가진 유사 배열 객체이다.
+- 요소(노드)의 변경을 실시간으로 감지하지 않는다(**non-live**)는 특징을 가진 유사 배열 객체이다.
+- - HTMLCollection 보다 유연하고 다양한 쿼리를 사용가능해서 더 자주쓰인다.
 
 ```javascript
 const $fruits = document.querySelectorAll(".red");
@@ -476,7 +477,7 @@ ul.lastElementChild.before(newLi);
 - 동일한 요소로 삽입하려 하면 새로 요소를 복사하여 삽입하지 않고 위치만 변경된다.
 - 대부분의 경우는 텍스트 노드는 삽입하지않고 단일 요소만 추가해서 유연성을 높인다.
 
-## DOM 요소 복제하기
+## DOM 요소 복제하고 삭제하기
 
 ### cloneNode()
 
@@ -485,3 +486,10 @@ const copiedNode = node.cloneNode(boolean);
 ```
 
 - 해당 node의 children(텍스트노드 포함) 까지 복제하려면 true, 해당 node 만 복제하려면 false
+
+### remove()
+
+```javascript
+const ul = document.querySelector('ul');
+ul.remove(); //선택한 요소가 삭제된다.
+```
