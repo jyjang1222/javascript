@@ -337,12 +337,12 @@ button.addEventListener('click', () => {
     - 해당 클래스명이 있으면 제거하고 없으면 추가
 - replace(변경할클래스명, 치환할클래스명) 
 
-## 요소를 추가하고 삽입하기
+## 요소를 추가하고 삽입하는 방법
 
 1. 자바스크립트로 요소 노드의 프로퍼티나 메서드를 이용해 HTML 코드를 문자열로 직접 작성해서 추가하기
 2. document객체의 createElement 메서드로 새로운 노드를 생성한후 삽입메서드를 이용해 수동으로 삽입하기
 
-### 요소노드의 innerHTML 프로퍼티로 요소 추가하기
+## 요소노드의 innerHTML 프로퍼티로 요소 추가하기
 ```javascript
 section.innerHTML = '<h2>New title</h2>'
 ul.innerHTML += '<li>item 4</li>'
@@ -353,7 +353,7 @@ ul.innerHTML += '<li>item 4</li>'
 - 추가한것 외의 바뀌지않은 형제 컨텐츠들을 다시 렌더링해서 성능면에서 좋지 않다
 - 추가하는 곳에 input같은 사용자입력값을 받는 태그가 있다면 사용자입력값이 초기화된다.
 
-### 요소노드의 insertAdjacentHTML()로 요소 추가하기
+## 요소노드의 insertAdjacentHTML()로 요소 추가하기
 ```html
 <!-- beforebegin -->
 <p>
@@ -373,9 +373,9 @@ element.insertAdjacentHTML(position, text)
 
 - position에는 beforebegin, afterbegin, beforeend, afterend 만 사용가능하다.
 - innerHTML프로퍼티와 달리 이미 사용중인 요소들을 다시 렌더링하지 않는다.
-- HTML 코드를 문자열로 직접 작성해서 추가하는 방식은 유지보수에는 좋지않다.
+- HTML 코드를 문자열로 직접 작성해서 추가하는 방식은 유지보수에 좋지않다.
 
-### createElement() 메서드로 요소 생성하기
+## createElement() 메서드로 요소 생성하기
 
 ```javascript
 let element = document.createElement(tagName[, options]);
@@ -387,4 +387,76 @@ ul.appendChild(newLi);
 newLi.style.backgroundColor = 'blue';
 ```
 
-- **createElement**로 만든 요소는 객체 속성과 메소드 들을 사용할 수 있어 매우 용이하다.
+- **createElement()**로 만든 요소는 객체 속성과 메소드 들을 사용할 수 있어 매우 용이하다.
+
+## DOM 요소 삽입하기
+
+### appendChild(), append()
+```javascript
+var p = document.createElement("p");
+document.body.appendChild(p);
+
+let div = document.createElement("div")
+div.append("Some text", p)
+```
+- **appendChild()** 메서드는 한 특정 부모 노드의 자식 노드 리스트 중 마지막 자식으로 붙인다.
+- **append()**는 appendChild()와 달리 텍스트 노드를 추가할 수 있고 한 번에 여러 개의 노드를 마지막 자식으로 추가할 수 있다.
+
+### prepend()
+
+- 부모 노드의 자식 노드 리스트 중 첫번째 자식으로 붙인다, append와 기능은 동일하다.
+- prependChild는 존재하지 않는다.
+
+### replaceWith()
+
+```javascript
+const div = document.createElement("div");
+const p = document.createElement("p");
+div.appendChild(p);
+// "<div><p></p></div>"
+const span = document.createElement("span");
+
+p.replaceWith(span);
+
+console.log(div.outerHTML);
+// "<div><span></span></div>"
+```
+
+- 특정 위치에 존재하는 요소를 지우고 요소, 텍스트 노드로 교체한다.
+
+### before & after
+
+
+
+### 삽입시 주의점
+
+```html
+<ul>
+  <!-- item 4 삽입 -->
+  <li>item 4</li>
+  <li>item 1</li>
+  <li>item 2</li>
+  <li>item 3</li>
+</ul>
+```
+```javascript
+const ul = document.querySelector('ul');
+const newLi = document.createElement('li');
+newLi.textContent = 'item 4';
+ul.prepend(newLi);
+```
+```javascript
+ul.lastElementChild.before(newLi);
+```
+```html
+<ul>
+  <li>item 1</li>
+  <li>item 2</li>
+  <!-- 이전에 삽입했던 것이 이동하게된다. -->
+  <li>item 4</li>
+  <li>item 3</li>
+</ul>
+```
+
+- 동일한 요소로 삽입하려 하면 새로 요소를 복사하여 삽입하지 않고 위치만 변경된다.
+- 대부분의 경우는 텍스트 노드는 삽입하지않고 단일 요소만 추가해서 유연성을 높인다.

@@ -11,9 +11,10 @@ button.addEventListener('click', () => {
 const section = document.querySelector('section');
 section.style.backgroundColor = 'lightgreen';
 // section.innerHTML = '<h2>New title</h2>'
-ul.innerHTML += '<li>item 4</li>';
+// ul.innerHTML += '<li>item 4</li>';
 const div = document.querySelector('div');
 // div.innerHTML += '<p>Something went wrong!</p>';
 div.insertAdjacentHTML('beforeend', '<p>Something</p>');
 
 const newLi = document.createElement('li');
+newLi.textContent = 'item 4';
