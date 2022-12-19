@@ -401,7 +401,8 @@ let div = document.createElement("div")
 div.append("Some text", p)
 ```
 - **appendChild()** 메서드는 한 특정 부모 노드의 자식 노드 리스트 중 마지막 자식으로 붙인다.
-- **append()**는 appendChild()와 달리 텍스트 노드를 추가할 수 있고 한 번에 여러 개의 노드를 마지막 자식으로 추가할 수 있다.
+- **append()** 는 appendChild()와 달리 텍스트 노드를 추가할 수 있고 한 번에 여러 개의 노드를 마지막 자식으로 추가할 수 있다.
+- appendChild()는 ie에 쓰이던 메서드로 주로 append() 를 사용하게 된다.
 
 ### prepend()
 
