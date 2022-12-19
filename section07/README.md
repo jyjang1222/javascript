@@ -59,7 +59,9 @@ document.querySelector('#main-title');
 document.querySelector('ul li:last-of-type');
 header.querySelector('p');
 ```
-<code>element.querySelector(selector)</code>
+
+> element.querySelector(selector)
+
 - querySelector() 는 css선택자에 대응하는 첫번째 요소를 반환한다.
 - 요소를 찾을 수 없는 경우에는 null을 반환한다.
 - 변수에 해당 요소 노드의 주소를 할당할 수있다.
@@ -362,7 +364,8 @@ foo
 ```javascript
 p.insertAdjacentHTML()
 ```
-<code>element.insertAdjacentHTML(position, text)<code>
+
+> element.insertAdjacentHTML(position, text)
 
 - position에는 beforebegin, afterbegin, beforeend, afterend 만 사용가능하다.
 - innerHTML프로퍼티와 달리 이미 사용중인 요소들을 다시 렌더링하지 않는다.
@@ -370,4 +373,4 @@ p.insertAdjacentHTML()
 
 ### createElement() 메서드로 요소 생성하기
 
-<code>let element = document.createElement(tagName[, options]);</code>
+> let element = document.createElement(tagName[, options]);
