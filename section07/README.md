@@ -59,8 +59,9 @@ document.querySelector('#main-title');
 document.querySelector('ul li:last-of-type');
 header.querySelector('p');
 ```
-
-> element.querySelector(selector)
+```javascript
+element.querySelector(selector)
+```
 
 - querySelector() 는 css선택자에 대응하는 첫번째 요소를 반환한다.
 - 요소를 찾을 수 없는 경우에는 null을 반환한다.
@@ -95,6 +96,7 @@ document.getElementsByClassName('list-item');
 - 일치하는 요소가 없으면 **빈 HTMLCollection**을 반환한다.
 
 ### getElementsByTagName()
+
 ```javascript
 document.getElementsByClassName('li');
 ```
@@ -365,7 +367,9 @@ foo
 p.insertAdjacentHTML()
 ```
 
-> element.insertAdjacentHTML(position, text)
+```javascript
+element.insertAdjacentHTML(position, text)
+```
 
 - position에는 beforebegin, afterbegin, beforeend, afterend 만 사용가능하다.
 - innerHTML프로퍼티와 달리 이미 사용중인 요소들을 다시 렌더링하지 않는다.
@@ -373,4 +377,14 @@ p.insertAdjacentHTML()
 
 ### createElement() 메서드로 요소 생성하기
 
-> let element = document.createElement(tagName[, options]);
+```javascript
+let element = document.createElement(tagName[, options]);
+```
+```javascript
+const newLi = document.createElement('li');
+newLi.textContent = 'item 5';
+ul.appendChild(newLi);
+newLi.style.backgroundColor = 'blue';
+```
+
+- **createElement**로 만든 요소는 객체 속성과 메소드 들을 사용할 수 있어 매우 용이하다.

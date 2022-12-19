@@ -15,4 +15,5 @@ ul.innerHTML += '<li>item 4</li>';
 const div = document.querySelector('div');
 // div.innerHTML += '<p>Something went wrong!</p>';
 div.insertAdjacentHTML('beforeend', '<p>Something</p>');
-div.querySelector('p')
+
+const newLi = document.createElement('li');

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>테이블 테스트</title>
+  <style>
+    table {width: 100%;}
+    table, th, td {border: 1px solid #000;border-collapse: collapse;}
+    th, td {padding: 20px;}
+    /* tr:nth-child(odd) {background-color: lightblue;} */
+  </style>
+</head>
+<body>
+  <h1>테이블 연습</h1>
+  <h2>테이블1</h2>
+  <table>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td rowspan="2">1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td colspan="3">1</td>
+    </tr>
+  </table>
+  <h2>테이블2</h2>
+  <table>
+    <tr>
+      <td colspan="3">1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td colspan="2">2</td>
+    </tr>
+    <tr>
+      <td rowspan="2">1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </table>
+  <h2>테이블3</h2>
+  <table>
+    <tr>
+      <td rowspan="4" style="position: relative;"><span style="position:absolute;left:50%;top:40%;transform:translate(-50%, -50%);font-size: 10rem">&spades;</span></td>
+      <td colspan="3">2</td>
+    </tr>
+    <tr>
+      <td rowspan="2">2</td>
+      <td rowspan="2">3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td colspan="3">2</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td colspan="3">2</td>
+    </tr>
+    <tr>
+      <td rowspan="2">1</td>
+      <td>2</td>
+      <td>3</td>
+      <td rowspan="2">4</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </table>
+</body>
+</html>
