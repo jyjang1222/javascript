@@ -422,11 +422,26 @@ console.log(div.outerHTML);
 // "<div><span></span></div>"
 ```
 
-- 특정 위치에 존재하는 요소를 지우고 요소, 텍스트 노드로 교체한다.
+- 선택한 요소를 지우고 요소, 텍스트 노드로 교체한다.
 
-### before & after
+### before() & after()
 
+```javascript
+let div = document.createElement("div");
+let p = document.createElement("p");
+div.appendChild(p);
 
+let span = document.createElement("span");
+let span2 = document.createElement("span");
+p.before(span);
+p.after(span2);
+
+console.log(div.outerHTML);
+// "<div><span></span><p></p><span></span></div>"
+```
+
+- **before()** 은 선택한 요소 바로 앞에 요소, 텍스트 노드를 추가한다.
+- **after()** 은 선택한 요소 바로 뒤에 요소, 텍스트 노드를 추가한다.
 
 ### 삽입시 주의점
 
