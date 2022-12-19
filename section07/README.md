@@ -475,3 +475,13 @@ ul.lastElementChild.before(newLi);
 
 - 동일한 요소로 삽입하려 하면 새로 요소를 복사하여 삽입하지 않고 위치만 변경된다.
 - 대부분의 경우는 텍스트 노드는 삽입하지않고 단일 요소만 추가해서 유연성을 높인다.
+
+## DOM 요소 복제하기
+
+### cloneNode()
+
+```javascript
+const copiedNode = node.cloneNode(boolean);
+```
+
+- 해당 node의 children(텍스트노드 포함) 까지 복제하려면 true, 해당 node 만 복제하려면 false
