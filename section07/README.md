@@ -325,8 +325,8 @@ button.addEventListener('click', () => {
 ```
 
 1. style 속성을 사용해서 인라인 스타일 직접 추가 또는 수정하기
-2. className 프로퍼티를 이용해서 클래스이름을 직접 작성해 추가제거해서 스타일 적용하기
-3. classList객체의 메서드를 이용해서 css클래스들을 추가 혹은 제거하기
+2. **className** 프로퍼티를 이용해서 클래스이름을 직접 작성해 추가제거해서 스타일 적용하기
+3. **classList** 객체의 메서드를 이용해서 css클래스들을 추가 혹은 제거하기
 
 - contains()
     - 해당 클래스가 있는지 유무를 확인해서 true false 반환

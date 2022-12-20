@@ -1,6 +1,6 @@
 const movieModal = document.getElementById('add-modal');
 const movieModalBtn = document.querySelector('header button');
-const movieModalBg = document.getElementById('backdrop');
+const modalBg = document.getElementById('backdrop');
 const movieModalCloseBtn = movieModal.querySelector('.btn--passive');
 const movieAddBtn = movieModalCloseBtn.nextElementSibling;
 const userInputs = movieModal.querySelectorAll('input');
@@ -16,7 +16,27 @@ const updateUI = () => {
     }
 };
 
-const showNewMovie = (title, imgUrl, rating) => {
+const deleteMovie = movieId => {
+  let movieIdx = 0;
+  for (const movie of movies) {
+    if (movie.id === movieId) {
+      break;
+    }
+    movieIdx++;
+  }
+  movies.splice(movieIdx, 1);
+  const listRoot = document.getElementById('movie-list');
+  listRoot.children[movieIdx].remove();
+};
+
+const deleteMovieHandler = () => {
+  const deleteMovieModal = document.getElementById('delete-modal');
+  deleteMovieModal.classList.add('visible');
+  modalBg();
+  // deleteMovie(movieId);
+};
+
+const showNewMovie = (id, title, imgUrl, rating) => {
     const newMovieElem = document.createElement('li');
     newMovieElem.className = 'movie-element';
     newMovieElem.innerHTML = `
@@ -28,18 +48,19 @@ const showNewMovie = (title, imgUrl, rating) => {
         <p>${rating}/5 stars</p>
     </div>
     `;
+    newMovieElem.addEventListener('click', deleteMovieHandler.bind(null, ));
     const listRoot = document.getElementById('movie-list');
     listRoot.append(newMovieElem);
 };
 
 // 추후 해당 함수를 호출할수있도록 분리해서 만듬
-const toggleMovieBg = () => {
-  movieModalBg.classList.toggle('visible');
+const toggleModalBg = () => {
+  modalBg.classList.toggle('visible');
 };
 
 const toggleMovieModal = () => {
   movieModal.classList.toggle('visible');
-  toggleMovieBg();
+  toggleModalBg();
 };
 
 const clearMovieInputs = () => {
@@ -68,6 +89,7 @@ const addMoiveHandler = () => {
   }
 
   const newMovie = {
+    id: String(Math.random()),
     title: titleVal,
     imgUrl: imgUrlVal,
     rating: ratingVal
@@ -77,7 +99,7 @@ const addMoiveHandler = () => {
   console.log(movies);
   toggleMovieModal();
   clearMovieInputs();
-  showNewMovie(newMovie.title, newMovie.imgUrl, newMovie.rating);
+  showNewMovie(newMovie.id, newMovie.title, newMovie.imgUrl, newMovie.rating);
   updateUI();
 };
 
@@ -86,6 +108,6 @@ const showMovieModalBgHandler = () => {
 };
 
 movieModalBtn.addEventListener('click', toggleMovieModal);
-movieModalBg.addEventListener('click', showMovieModalBgHandler);
+modalBg.addEventListener('click', showMovieModalBgHandler);
 movieModalCloseBtn.addEventListener('click', closeMoiveModalHandler);
 movieAddBtn.addEventListener('click', addMoiveHandler);

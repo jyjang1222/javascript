@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 과제</title>
+		<style>
+			table, th, td {border: 1px solid #000;border-collapse: collapse;}
+
+			body>div {margin-bottom: 20px;}
+
+			.t1-1 p {font-size: 20px;font-weight: 700;color: #00F;}
+			.t1-1 p:first-child, .t1-1 p:last-child {color: #F00;}
+			.t1-1 p:last-child {font-size: 16px;}
+			.t1-1 p:nth-child(5) {color: yellow;}
+
+			.t1-2 h2 {padding: 10px 0;background-color: yellow;border: 2px solid #F00;text-align: center;}
+
+			.t1-3 {border: 1px solid #F00;}
+			.t1-3 div {display: flex;justify-content: center;align-items: center;font-size: 20px;font-weight: 700;}
+			.t1-3 .body {height: 160px;}
+			.t1-3 div:not(.body) {height: 80px;background-color: #888;}
+
+			.t2-1 th, .t2-1 td {border: 1px solid #00F;}
+			.t2-2 ul {list-style: none;}
+
+			.t3-2 p, .t3-3 p {background-color: yellow;border: 2px solid #F00;}
+
+			.t3-1 h2 {text-decoration: overline;}
+			.t3-1 h3 {text-decoration: line-through;}
+			.t3-1 h4 {text-decoration: underline;}
+
+			.t3-2 p:nth-of-type(1) {margin: 20px;}
+			.t3-2 p:nth-of-type(2) {margin: 20px 50px;}
+			.t3-2 p:nth-of-type(3) {margin: 20px 50px 30px;}
+			.t3-2 p:nth-of-type(4) {margin: 20px 30px 50px 70px;}
+
+			.t3-3 p:nth-of-type(1) {padding: 20px;}
+			.t3-3 p:nth-of-type(2) {padding: 20px 50px;}
+			.t3-3 p:nth-of-type(3) {padding: 20px 50px 30px;}
+			.t3-3 p:nth-of-type(4) {padding: 20px 30px 50px 70px;}
+
+			.test4 {width: 600px;padding: 40px 60px;border: 1px solid #000;}
+			.t4-1>h2 {text-align: center;}
+			.t4-1>p {padding-bottom: 20px;border-bottom: 1px solid #AAA;text-align: center;}
+			.t4-1 fieldset {margin-bottom: 16px;padding: 16px 20px;}
+			.t4-1 fieldset:nth-of-type(1) table {width: 100%;}
+			.t4-1 fieldset:nth-of-type(1) th, .t4-1 fieldset:nth-of-type(1) td {padding: 10px 0;}
+			.t4-1 fieldset:nth-of-type(1) td {padding: 10px 20px;}
+			.t4-1 fieldset:nth-of-type(1) input {display: block;box-sizing:border-box;width: 100%;}
+			.t4-1 fieldset:nth-of-type(2) ul {list-style: none;margin: 0;padding: 0;}
+			.t4-1 fieldset:nth-of-type(2) li {margin: 10px 0;}
+			.t4-1 fieldset:nth-of-type(3) {margin-bottom: 30px;}
+			.t4-1 fieldset:nth-of-type(3) textarea {width: 100%;height: 100px;resize: none;}
+			.t4-1 .btns {text-align: center;}
+		</style>
+  </head>
+  <body>
+		<div class="test1">
+			<div class="t1-1">
+				<p>Hello, CSS</p>
+				<p>Hello, CSS</p>
+				<p>Hello, CSS</p>
+				<p>Hello, CSS</p>
+				<p>Hello, CSS</p>
+				<p>Hello, CSS</p>
+			</div>
+			<div class="t1-2">
+				<h2>This is a heading</h2>
+			</div>
+			<div class="t1-3">
+				<div class="header">header</div>
+				<div class="body">body</div>
+				<div class="footer">footer</div>
+			</div>
+		</div><!-- test1 -->
+		<div class="test2">
+			<div class="t2-1">
+				<table>
+					<tr>
+						<th>이름</th>
+						<th>이메일</th>
+					</tr>
+					<tr>
+						<td>김철수</td>
+						<td>chul@google.com</td>
+					</tr>
+					<tr>
+						<td>김영희</td>
+						<td>young@google.com</td>
+					</tr>
+				</table>
+			</div>
+			<div class="t2-2">
+				<h2>도서 시리즈</h2>
+				<ul>
+					<li>Do it! 시리즈</li>
+					<li>첫 코딩 시리즈</li>
+					<li>된다 시리즈</li>
+				</ul>
+				<ol type="A">
+					<li>Do it! 시리즈</li>
+					<li>첫 코딩 시리즈</li>
+					<li>된다 시리즈</li>
+				</ol>
+			</div>
+		</div><!-- test2 -->
+		<div class="test3">
+			<div class="t3-1">
+				<h2>텍스트 장식의 예입니다.</h2>
+				<h3>텍스트 장식의 예입니다.</h3>
+				<h4>텍스트 장식의 예입니다.</h4>
+			</div>
+			<div class="t3-2">
+				<p>상하좌우 20px 마진</p>
+				<p>상하 20px 좌우 50px 마진</p>
+				<p>상 20px 좌우 50px 하 30px 마진</p>
+				<p>상 20px 우 30px 하 50px 좌 70px 마진</p>
+			</div>
+			<div class="t3-3">
+				<p>상하좌우 20px 패딩</p>
+				<p>상하 20px 좌우 50px 패딩</p>
+				<p>상 20px 좌우 50px 하 30px 패딩</p>
+				<p>상 20px 우 30px 하 50px 좌 70px 패딩</p>
+			</div>
+		</div><!-- test3 -->
+		<div class="test4">
+			<div class="t4-1">
+				<h2>프런트엔드 개발자 지원서</h2>
+				<p>HTML, CSS, Javascript에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
+				<form action="post">
+					<fieldset>
+						<legend>개인정보</legend>
+						<table>
+							<tr>
+								<th>
+									<label for="applicantName">이름</label>
+								</th>
+								<td>
+									<input type="text" id="applicantName" required>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="phoneNumber">연락처</label>
+								</th>
+								<td>
+									<input type="tel" id="phoneNumber" required>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>지원 분야</legend>
+						<ul>
+							<li>
+								<label for="webPub"><input type="radio" name="applicantType" id="webPub" checked>웹 퍼블리싱</label>
+							</li>
+							<li>
+								<label for="webDev"><input type="radio" name="applicantType" id="webDev">웹 애플리케이션 개발</label>
+							</li>
+							<li>
+								<label for="DevMaintenance"><input type="radio" name="applicantType" id="DevMaintenance">개발 환경 개선</label>
+							</li>
+						</ul>
+					</fieldset>
+					<fieldset>
+						<legend>지원 동기</legend>
+						<textarea name="" id=""></textarea>
+					</fieldset>
+					<div class="btns">
+						<button type="submit">접수하기</button>
+						<button type="reset">다시쓰기</button>
+					</div>
+				</form>
+			</div>
+		</div><!-- test4 -->
+	</body>
+</html>
