@@ -328,15 +328,16 @@ button.addEventListener('click', () => {
 2. **className** 프로퍼티를 이용해서 클래스이름을 직접 작성해 추가제거해서 스타일 적용하기
 3. **classList** 객체의 메서드를 이용해서 css클래스들을 추가 혹은 제거하기
 
-- contains()
-    - 해당 클래스가 있는지 유무를 확인해서 true false 반환
-- add()
-    - 클래스 넣기
-- remove()
-    - 클래스 제거
-- toggle()
-    - 해당 클래스명이 있으면 제거하고 없으면 추가
-- replace(변경할클래스명, 치환할클래스명) 
+### contains()
+- 해당 클래스가 있는지 유무를 확인해서 true false 반환
+### add()
+- 클래스 넣기
+### remove()
+- 클래스 제거
+### toggle()
+- 해당 클래스명이 있으면 제거하고 없으면 추가
+### replace() 
+- replace(변경할클래스명, 치환할클래스명)
 
 ## 요소를 추가하고 삽입하는 방법
 
