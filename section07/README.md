@@ -228,7 +228,7 @@ h1.style.backgroundColor = 'dodgerblue';
 - 해당 요소 노드의 클래스명을 가져오거나 설정할 수 있다.
 ### elem.id
 - 해당 요소 노드의 아이디명을 가져오거나 설정할 수 있다.
-### elem.textConent
+### elem.textContent
 - 해당 요소 노드의 텍스트 노드를 가져오거나 설정할 수 있다.
 ### elem.style.cssProperty
 - 해당 요소 노드의 css속성값를 가져오거나 설정할 수 있다.
