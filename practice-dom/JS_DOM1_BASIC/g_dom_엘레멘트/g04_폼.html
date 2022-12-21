@@ -1,0 +1,29 @@
+<!DOCTYPE >
+<html>
+<head>
+    <script>
+        function process() {
+            /*
+                document.myform.mytext 에서
+                myform 은  <form name="myform"> 을 뜻하고,
+
+                document.myform.mytext 에서
+                mytext 는  <input type="text" name="mytext"> 을뜻한다. 
+
+
+                var obj = document.myform.mytext 에서
+                obj.value 는 <input type="text" name="mytext"> 의 value를 뜻한다. 
+            */
+
+            var obj = document.myform.mytext;
+            alert(obj.value);
+        }
+    </script>
+</head>
+<body>
+    <form name="myform">
+        <input type="text" name="mytext">
+        <input type="button" value="제출" onclick="process()">
+    </form>
+</body>
+</html>

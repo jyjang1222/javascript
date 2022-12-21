@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset = "UTF-8">
+<title> 랜덤 </title>
+<script>
+		document.write( Math.random()  + "<br>"); // 소수점으로나온다.
+		// 원하는 범위를 곱해주고 소수점을 제거하면된다. 
+		// 예) 0~9
+		var ran = Math.random() * 10;
+		ran = parseInt(ran);		
+		document.write( ran  + "<br>");
+
+
+		// 한번에 줄이면 	
+		var ran2 = parseInt(Math.random() * 10);
+		document.write( ran2  + "<br>");
+		
+		//문제1) 140 ~ 170사이의 랜덤값출력 
+
+		//문제2) -4 ~ 3사이의 랜덤값출력 
+</script>
+</head>
+<body>
+</body>
+</html>

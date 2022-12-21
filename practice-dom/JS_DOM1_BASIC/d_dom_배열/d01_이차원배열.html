@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset = "UTF-8">
+<title> 배열 </title>
+<script>
+      var dong = [
+              [1001,1002,1003],
+              [2001,2002,2003],
+              [3001,3002,3003],
+        ];
+        var pay = [
+              [34000,12000,31000],
+              [40200,65000,20020],
+              [45300,1300,24200],
+        ]
+
+        // 2차원배열
+
+        for(var i = 0; i < dong.length; i++){
+                for(var j = 0; j < dong[i].length; j++){
+                        document.write(dong[i][j] + "  ");
+                        
+               }       
+               document.write("<br>");
+        }
+
+        document.write("<hr>");
+
+        for(var i = 0; i < pay.length; i++){
+                for(var j = 0; j < pay[i].length; j++){
+                        document.write(pay[i][j] + "  ");
+                        
+               }       
+               document.write("<br>");
+        }
+
+        /*
+                 문제 1) 각층별 관리비 합 출력
+		 정답 1) 4400, 7100, 5400	
+
+		 문제 2) 호를 입력하면 관리비 출력
+		 정답 2) 입력 : 202	관리비 출력 : 2000	
+
+		 문제 3) 관리비가 가장 많이 나온 집, 적게 나온 집 출력
+		 정답 3) 가장 많이 나온 집(201), 가장 적게 나온 집(303)	
+                 	
+		 문제 4) 호 2개를 입력하면 관리비 교체 (101 , 102) ==>  (2100, 1000)		
+		 문제 5) 관리비 많이 나온순서대로 관리비와 호수 출력 (정렬)
+                */
+
+</script>
+</head>
+<body>
+</body>
+</html>

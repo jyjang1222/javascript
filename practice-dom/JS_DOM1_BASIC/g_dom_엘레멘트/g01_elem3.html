@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function elementTest(){
+            var s = '[' +
+             '{"name":"Hong","age":"21" },' +
+             '{"name":"Kim","age":"22" },' +
+             '{"name":"Park","age":"23" }]';
+
+            var students = JSON.parse(s);
+
+            document.getElementById("name").innerHTML = students[1].name;
+            document.getElementById("age").innerHTML = students[1].age;
+        }
+
+    </script>
+
+</head>
+<body>
+    <h4>학생  명단</h4>
+    <p>
+		이름: <span id="name"></span><br><br>
+        나이: <span id="span"></div>
+        <script>
+            elementTest();
+        </script>
+	</p>
+
+
+</body>
+</html>

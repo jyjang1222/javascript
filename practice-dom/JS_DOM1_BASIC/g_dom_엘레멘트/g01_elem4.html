@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+        function get() {
+            var val = document.getElementById("ex").innerHTML;
+            alert(val);
+        }
+        function set(v) {
+            document.getElementById("ex").innerHTML = v;
+        }
+        function set2(v) {
+            document.getElementById("ex2").innerHTML += v;
+        }
+    </script>
+</head>
+<body>
+    <a href="#" onclick="get()">div 요소 내용 출력하기</a><br /><br>
+
+    <hr>
+
+    <a href="#" onclick="set('변경되었습니다1.')">div 요소 내용 변경하기</a><br /><br>
+    <div id="ex">여기가 div로 선언되었습니다.</div>
+
+    <hr>
+
+    <a href="#" onclick="set2('변경되었습니다2.')">div 요소 내용 변경하기</a><br /><br>
+    <div id="ex2">여기가 div로 선언되었습니다.</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var darr = [
+            [1001 , "qwer1111" , "asdf1111" , "김철수" , 10, 20, 30],
+            [1002 , "qwer2222" , "asdf2222" , "박민정" , 40, 60, 10],
+            [1003 , "qwer3333" , "asdf3333" , "이상아" , 15, 10, 50],
+            [1004 , "qwer4444" , "asdf4444" , "조민수" , 16, 40, 20],
+        ]
+        /*
+            위와 같은 배열이 있을 때 각 학생별 총점을 구하고싶다고 할 때 ,
+            아래와 같이 식을 작성할것이다. 
+        */
+
+        var total = [0,0,0,0];
+        for(var i = 0; i < darr.length; i++){
+            total[i] += (darr[i][4] + darr[i][5] + darr[i][6]);
+        }
+        console.log(total)
+        
+        /*
+            위 식을 json 으로 바꿔보자.
+        */
+        var jsonArr = [
+            {"num" : 1001 , "id" : "qwer1111" , "pw" : "asdf1111" , "name" : "김철수" , "math" : 10, "eng" : 20, "kor" : 30},
+            {"num" : 1002 , "id" : "qwer2222" , "pw" : "asdf2222" , "name" : "박민정" , "math" : 40, "eng" : 60, "kor" : 10},
+            {"num" : 1003 , "id" : "qwer3333" , "pw" : "asdf3333" , "name" : "이상아" , "math" : 15, "eng" : 10, "kor" : 50},
+            {"num" : 1004 , "id" : "qwer4444" , "pw" : "asdf4444" , "name" : "조민수" , "math" : 16, "eng" : 40, "kor" : 20},
+        ]
+
+        var total = [0,0,0,0];
+        for(var i = 0; i < jsonArr.length; i++){
+            total[i] += (jsonArr[i]['math'] + jsonArr[i]['eng'] + jsonArr[i]['kor']); // 코드가 훨신 직관적으로 변한다. 
+        }
+        console.log(total);
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+            /*  
+                제이슨 형변환.
+
+                info1 과 같이 json을 직접 만들수있고, 
+
+                info2 와 같이 문자열로 json 형태의 모양을 만든 후
+                JSON.parse(문자열)을 통해 형변환을 할 수도 있다. 
+
+            */
+
+       
+            var info1 = [
+                {'name':'Hong', 'age':21},
+                {'name':'Kim', 'age':22},
+                {'name':'Park', 'age':23},
+            ]
+            alert(info1);
+
+
+            var str = '[' +
+             '{"name":"Hong","age":"21" },' +
+             '{"name":"Kim","age":"22" },' +
+             '{"name":"Park","age":"23" }]';
+
+            var info2 = JSON.parse(str);
+            alert(info2);
+    </script>
+
+</head>
+<body>
+    
+
+</body>
+</html>
