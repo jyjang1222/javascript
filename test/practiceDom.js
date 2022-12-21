@@ -37,28 +37,31 @@ const buyListH3 = document.createElement('h3');
 buyListH3.textContent = '구입한 과일';
 buyBtn.after(buyListH3);
 
-// 과일 구입하기 기능 구현
 const buyList = document.createElement('ul');
-const buyLi = document.createElement('li');
-
-const buyFruitsLog = [{
-    // 'name': '',
-    // 'quantity': 0
-}];
+buyListH3.after(buyList);
+// 과일 구입하기 기능 구현
+const buyFruitLogs = [];
 
 const clearBuyInput = () => {
     buyInput.value = '';
     buyInput.setAttribute('value', buyInput.value);
 };
 
-const buyFruit = input => {
-    let userInput = input;
+const clearbuyList = () => {
+    const arr = buyList.querySelectorAll('li');
+    for (const el of arr) {
+        el.remove();
+    }
+};
+
+const buyFruit = () => {
+    let userInput = buyInput.value;
+    const fruitsLi = fruitList.querySelectorAll('li');
+    const buyLog = {};
+    let buyFruitName = '';
+    
     // 해당 과일이 있는지 체크
     let chkFruit = false;
-    const fruitsLi = fruitList.querySelectorAll('li');
-    // const buyLog = {};
-    let buyFruitName = '';
-
     for (const li of fruitsLi) {
         let fruitName = li.textContent;
         if (fruitName === userInput) {
@@ -67,24 +70,37 @@ const buyFruit = input => {
         }
     }
 
-
     if (chkFruit) {
         // 구입목록에 이미 있는지 체크
-        let chk = false;
-        for (const log of buyFruitsLog) {
-            if (buyFruitName in log) {
-                chk = true;
+        let chk = true;
+        for (const log of buyFruitLogs) {
+            // 중복구입이면
+            if (log['name'] === buyFruitName) {
+                chk = false;
                 log['quantity'] += 1;
             }
         }
-        // 
+        // 첫구입이면
         if (chk) {
-            
+            buyLog['name'] = buyFruitName;
+            buyLog['quantity'] = 1;
+            buyFruitLogs.push(buyLog);
         }
     } else {
         alert('없는 과일입니다.');
     }
+
+    // 목록 초기화
+    clearbuyList();
+    // 구입한 과일 렌더링하기
+    for (const log of buyFruitLogs) {
+        const buyLi = document.createElement('li');
+        buyLi.textContent = `${log['name']}: ${log['quantity']}개`;
+        buyList.append(buyLi);
+    }
+
+    // console.log(buyFruitLogs);
     clearBuyInput();
 };
 
-buyBtn.addEventListener('click', buyFruit.bind(buyInput.value));
+buyBtn.addEventListener('click', buyFruit);
