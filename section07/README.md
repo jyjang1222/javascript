@@ -32,7 +32,8 @@ HTML  - Element Node
             paragraph
 */
 ```
-- 브라우저는 HTML 코드를 분석해서 그에 대한 구조화된 객체 표현(DOM)을 생성한다.
+
+- **브라우저는 HTML 코드를 분석해서 그에 대한 구조화된 객체 표현(DOM)을 생성한다**
 - 모든 HTML 요소에 대해 **요소 노드(Element Node)**가 생성된다.
 - 이 노드들간의 관계는 부모와 자식 노드로 불린다.
 - 결국 브라우저는 HTML 요소들의 부모자식 관계로 된 노드트리를 만들어 추적한다.
@@ -222,6 +223,19 @@ h1.style.backgroundColor = 'dodgerblue';
 - 변수에 탐색한 요소 노드를 할당할 수 있다.
 - 요소노드가 할당된 변수는 HTML요소에 관련된 DOM 속성을 사용할 수 있다.
 - 속성의 종류는 많고 mdn사이트나 console.dir 메서드를 활용하면 사용할 수 속성 목록을 조회 가능하다.
+
+### elem.className
+- 해당 요소 노드의 클래스명을 가져오거나 설정할 수 있다.
+### elem.id
+- 해당 요소 노드의 아이디명을 가져오거나 설정할 수 있다.
+### elem.textConent
+- 해당 요소 노드의 텍스트 노드를 가져오거나 설정할 수 있다.
+### elem.style.cssProperty
+- 해당 요소 노드의 css속성값를 가져오거나 설정할 수 있다.
+### elem.getAttribute('attrName')
+- 해당 요소 노드의 html속성값을 가져올 수 있다.
+### elem.setAttribute('attrName', 'value')
+- 해당 요소 노드의 html속성값을 설정할 수 있다.
 
 ## 속성(Attribute) vs 프로퍼티(Property)
 
