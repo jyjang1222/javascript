@@ -322,7 +322,7 @@ li.closest('body') // 아무 조상 중에서 인자로 넣은 요소 선택
 - 부모 노드를 선택
 #### elem.parentElement
 - 부모 요소 노드를 선택
-\n
+
 - parentNode와 parentElement는 결과가 거의 동일하다. 요소 노드만이 자식 노드를 가질 수 있기 때문이다.
 - document.documentElement는 parentNode와 parentElement의 결과가 유일하게 다르다. 하지만 document.documentElement.parentNode 이런식으로 쓸일은 거의 없다..
 
@@ -371,15 +371,15 @@ button.addEventListener('click', () => {
 2. **className** 프로퍼티를 이용해서 클래스이름을 직접 작성해 추가제거해서 스타일 적용하기
 3. **classList** 객체의 메서드를 이용해서 css클래스들을 추가 혹은 제거하기
 
-### contains()
+### classList.contains()
 - 해당 클래스가 있는지 유무를 확인해서 true false 반환
-### add()
+### classList.add()
 - 클래스 넣기
-### remove()
+### classList.remove()
 - 클래스 제거
-### toggle()
+### classList.toggle()
 - 해당 클래스명이 있으면 제거하고 없으면 추가
-### replace() 
+### classList.replace() 
 - replace(변경할클래스명, 치환할클래스명)
 
 ## 요소를 추가하고 삽입하는 방법
@@ -387,7 +387,7 @@ button.addEventListener('click', () => {
 1. 자바스크립트로 요소 노드의 프로퍼티나 메서드를 이용해 HTML 코드를 문자열로 직접 작성해서 추가하기
 2. document객체의 createElement 메서드로 새로운 노드를 생성한후 삽입메서드를 이용해 수동으로 삽입하기
 
-## 요소노드의 innerHTML 프로퍼티로 요소 추가하기
+### elem.innerHTML
 ```javascript
 section.innerHTML = '<h2>New title</h2>'
 ul.innerHTML += '<li>item 4</li>'
@@ -398,7 +398,8 @@ ul.innerHTML += '<li>item 4</li>'
 - 추가한것 외의 바뀌지않은 형제 컨텐츠들을 다시 렌더링해서 성능면에서 좋지 않다
 - 추가하는 곳에 input같은 사용자입력값을 받는 태그가 있다면 사용자입력값이 초기화된다.
 
-## 요소노드의 insertAdjacentHTML()로 요소 추가하기
+### elem.insertAdjacentHTML()
+
 ```html
 <!-- beforebegin -->
 <p>
@@ -420,7 +421,7 @@ element.insertAdjacentHTML(position, text)
 - innerHTML프로퍼티와 달리 이미 사용중인 요소들을 다시 렌더링하지 않는다.
 - HTML 코드를 문자열로 직접 작성해서 추가하는 방식은 유지보수에 좋지않다.
 
-## createElement() 메서드로 요소 생성하기
+### document.createElement()
 
 ```javascript
 let element = document.createElement(tagName[, options]);
