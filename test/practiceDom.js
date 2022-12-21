@@ -105,3 +105,19 @@ const buyFruit = () => {
 };
 
 buyBtn.addEventListener('click', buyFruit);
+
+// 요소 노드 선택 연습
+fruitList.firstElementChild.className = 'red';
+fruitList.firstElementChild.classList.add('yellow');
+fruitList.firstElementChild.classList.remove('red');
+fruitList.firstElementChild.nextElementSibling.classList.toggle('red');
+fruitList.lastElementChild.classList.add('red');
+fruitList.lastElementChild.classList.replace('red', 'purple');
+const bool = fruitList.lastElementChild.previousElementSibling.classList.contains('pink');
+if (!bool) {
+    fruitList.lastElementChild.previousElementSibling.classList.add('pink');
+}
+const pear = document.createElement('li');
+pear.classList.add('lightbrown');
+pear.textContent = 'pear';
+fruitList.querySelector('li:nth-child(3)').replaceWith(pear);
