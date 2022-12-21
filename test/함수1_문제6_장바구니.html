@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			문제1) 회원별 아이템 구매목록 출력 
+			예) 
+				[이만수 ==> 고래밥3,칸쵸1] 
+				[김철민 ==> 고래밥1] 
+				[이영희 ==> 고래밥1,새우깡2]
+			
+			문제2) 아이템별로 판매개수출력
+			예) [고래밥 ==> 5][새우깡 ==> 2][칸쵸 ==> 1]
+		*/
+	
+		var $$itemData = "1001/고래밥,1002/새우깡,1003/칸쵸";
+		var $$userData = "3001/이만수,3002/김철민,3003/이영희";
+
+		const $itemData = $$itemData.split(',');
+		const $userData = $$userData.split(',');
+
+		const itemData = [];
+		const userData = [];
+
+		for (const v of $itemData) {
+			const dict = {}
+			const tmp = v.split('/');
+			dict['itemId'] = tmp[0];
+			dict.itemName = tmp[1];
+			itemData.push(dict);
+		}
+		for (const v of $userData) {
+			const dict = {}
+			const tmp = v.split('/');
+			dict['userId'] = tmp[0];
+			dict['userName'] = tmp[1];
+			userData.push(dict);
+		}
+		
+		console.log(itemData);
+		console.log(userData);
+		
+		var $$cartData = "";
+		$$cartData += "3001/1001\n";
+		$$cartData += "3001/1001\n";
+		$$cartData += "3003/1002\n";
+		$$cartData += "3001/1001\n";
+		$$cartData += "3001/1003\n";
+		$$cartData += "3003/1002\n";
+		$$cartData += "3003/1001\n";
+		$$cartData += "3002/1001";
+
+		const $cartData = $$cartData.split('\n');
+		let cartData = [];
+
+		for (const v of $cartData) {
+			const dict = {}
+			const tmp = v.split('/');
+			dict['userId'] = tmp[0];
+			dict['itemId'] = tmp[1];
+			cartData.push(dict);
+		}
+
+		console.log(cartData);
+
+		// 합치기
+		const buyLog = [];
+		for (const data of cartData) {
+			const dict = {};
+			// 중복체크
+			let chk = true;
+			for (const log of buyLog) {
+				if (
+					log['userId'] === data['userId'] &&
+					log['itemId'] === data['itemId']
+				) {
+					log['count'] += 1;
+					chk = false;
+				}
+			}
+			// 중복이 아니라면
+			if (chk) {
+				dict['userId'] = data['userId']
+				dict['itemId'] = data['itemId']
+
+				// 아이템이름 합치기
+				let $itemName = '';
+				for (const v of itemData) {
+					if (v['itemId'] === data['itemId']) {
+						$itemName = v['itemName'];
+					}
+				}
+				dict['itemName'] = $itemName;
+				// 사람이름 합치기
+				let $userName = '';
+				for (const v of userData) {
+					if (v['userId'] === data['userId']) {
+						$userName = v['userName'];
+					}
+				}
+				dict['userName'] = $userName;
+				
+				dict['count'] = 1;
+				buyLog.push(dict)
+			}
+		}
+		console.log(buyLog);
+
+		// 문제1 출력
+		for (const data of userData) {
+			let msg = `[${data.userName} ==> `;
+			for (const log of buyLog) {
+				if (data.userName === log.userName) {
+					msg += `${log.itemName}${log.count}`;
+				}
+			}
+			msg += `]`;
+			console.log(msg);
+		}
+		// 문제2 출력
+		for (const data of itemData) {
+			let msg = `[${data.itemName} ==> `;
+			let count = 0;
+			for (const log of buyLog) {
+				if (data.itemName === log.itemName) {
+					count += log.count;
+				}
+			}
+			msg += `${count}]`;
+			console.log(msg);
+		}
+	</script>
+</body>
+</html>
