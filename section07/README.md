@@ -322,7 +322,7 @@ li.closest('body') // 아무 조상 중에서 인자로 넣은 요소 선택
 - 부모 노드를 선택
 #### elem.parentElement
 - 부모 요소 노드를 선택
-
+  
 - parentNode와 parentElement는 결과가 거의 동일하다. 요소 노드만이 자식 노드를 가질 수 있기 때문이다.
 - document.documentElement는 parentNode와 parentElement의 결과가 유일하게 다르다. 하지만 document.documentElement.parentNode 이런식으로 쓸일은 거의 없다..
 
