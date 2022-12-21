@@ -39,6 +39,7 @@ buyBtn.after(buyListH3);
 
 const buyList = document.createElement('ul');
 buyListH3.after(buyList);
+
 // 과일 구입하기 기능 구현
 const buyFruitLogs = [];
 

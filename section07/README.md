@@ -260,6 +260,8 @@ input.value = input.getAttribute('value');
 - 그래서 **setAttribute()** 메서드를 사용하여 html문서에도 변경사항을 적용해주거나 **getAttribute()** 메서드를 사용하여 프로퍼티에도 값을 적용해주면 된다.
 
 ## DOM 탐색(Traversing)
+
+### 노드와의 관계
 ```html
 <body>
   <ul>
@@ -279,29 +281,47 @@ body 는 li의 조상 이고 ul의 부모이자 조상이다
 
 ```javascript
 const ul = document.querySelector('ul');
-ul.children // 자식 노드 중 요소 노드만을 선택 (텍스트 노드 제외)
+ul.children
 // HTMLCollection(3) [li.list-item.red, li.list-item.red, li.list-item.red]
-ul.childNodes // 모든 자식 노드를 선택
+ul.childNodes
 // NodeList(7) [text, li.list-item.red, text, li.list-item.red, text, li.list-item.red, text]
-ul.firstChild //자식 노드 중 첫째
-ul.firstElementChild //자식 요소 노드 중 첫째
+ul.firstChild
+ul.firstElementChild
 ul.lastChild
 ul.lastElementChild
 ```
+
+#### elem.children
+- 자식 노드 중 요소 노드만을 선택 (텍스트 노드 제외)
+#### elem.childNodes
+- 모든 자식 노드를 선택
+#### elem.firstChild
+- 자식 노드 중 첫번째 노드
+#### elem.firstElementChild
+- 자식 요소 노드 중 첫번째 요소 노드
+#### elem.lastChild
+- 자식 노드 중 마지막 노드
+#### elem.lastElementChild
+- 자식 요소 노드 중 마지막 요소 노드
 
 ### 부모노드 선택하기
 
 ```javascript
 const li = document.querySelector('li');
 
-li.parentNode // 부모 노드를 선택
-li.parentElement // 부모 요소 노드를 선택
+li.parentNode
+li.parentElement
 
 document.documentElement.parentElement // null
 document.documentElement.parentNode // > #document
 
 li.closest('body') // 아무 조상 중에서 인자로 넣은 요소 선택
 ```
+
+#### elem.parentNode
+- 부모 노드를 선택
+#### elem.parentElement
+- 부모 요소 노드를 선택
 
 - parentNode와 parentElement는 결과가 거의 동일하다. 요소 노드만이 자식 노드를 가질 수 있기 때문이다.
 - document.documentElement는 parentNode와 parentElement의 결과가 유일하게 다르다. 하지만 document.documentElement.parentNode 이런식으로 쓸일은 거의 없다..
@@ -311,11 +331,20 @@ li.closest('body') // 아무 조상 중에서 인자로 넣은 요소 선택
 ```javascript
 const ul = document.querySelector('ul');
 
-ul.previousSibling // > #text   바로 이전 형제 노드 선택
-ul.previousElementSibling // header   바로 이전 형제 요소 노드 선택
-ul.nextSibling // 바로 이후 형제 노드 선택
-ul.nextElementSibling // 바로 이후 형제 요소 노드 선택
+ul.previousSibling // > #text
+ul.previousElementSibling // header
+ul.nextSibling
+ul.nextElementSibling
 ```
+
+#### elem.previousSibling
+- elem 바로 이전 형제 노드 선택
+#### elem.previousElementSibling
+- elem 바로 이전 형제 요소 노드 선택
+#### elem.nextSibling
+- elem 바로 이후 형제 노드 선택
+#### elem.nextElementSibling
+- elem 바로 이후 형제 요소 노드 선택
 
 ## DOM 탐색 속성 vs 쿼리 메서드
 
