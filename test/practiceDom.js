@@ -87,8 +87,6 @@ const buyFruit = () => {
             buyLog['quantity'] = 1;
             buyFruitLogs.push(buyLog);
         }
-    } else {
-        alert('없는 과일입니다.');
     }
 
     // 목록 초기화

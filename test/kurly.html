@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>컬리 - 마켓컬리/뷰티컬리</title>
+		<meta name="description" content="마켓컬리 사이트 입니다.">
+		<meta name="keywords" content="상품">
+		<link rel="icon" href="https://www.kurly.com/favicon.ico">
+		<style>
+			/* RESET */
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+				v2.0 | 20110126
+				License: none (public domain)
+			*/
+
+			html, body, div, span, applet, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			a, abbr, acronym, address, big, cite, code,
+			del, dfn, em, img, ins, kbd, q, s, samp,
+			small, strike, strong, sub, sup, tt, var,
+			b, u, i, center,
+			dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td,
+			article, aside, canvas, details, embed, 
+			figure, figcaption, footer, header, hgroup, 
+			menu, nav, output, ruby, section, summary,
+			time, mark, audio, video {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				font-size: 100%;
+				font: inherit;
+				vertical-align: baseline;
+			}
+			/* HTML5 display-role reset for older browsers */
+			article, aside, details, figcaption, figure, 
+			footer, header, hgroup, menu, nav, section {
+				display: block;
+			}
+			body {
+				line-height: 1;
+			}
+			ol, ul {
+				list-style: none;
+			}
+			blockquote, q {
+				quotes: none;
+			}
+			blockquote:before, blockquote:after,
+			q:before, q:after {
+				content: '';
+				content: none;
+			}
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+			}
+			/* custom */
+			a:link {text-decoration: none;color: #000;}
+
+			
+			/* Common */
+			.container {margin: 0 auto;}
+			.ir {font-size: 0;text-indent: -9999em;}
+			/* Header */
+			.nav_sign {display: flex;justify-content: flex-end;padding: 10px 10px 0 0;}
+			.nav_sign ul {display: flex;margin-bottom: 40px;font-size: 14px;}
+			.nav_sign li {font-size: 14px;}
+			.nav_sign li::after {content: '';display: inline-block;margin: 0 8px;width: 1px;height: 10px;background-color: #888;}
+			.nav_sign li:last-child::after {display: none;}
+			h1 {display: flex;justify-content: center;}
+			h1 a {display: block;width: 100px;height: 70px;margin-bottom: 20px;background: no-repeat center / contain url('https://blog.kakaocdn.net/dn/bjjrHJ/btqBPXNC9tF/Sibyn4CJ4fWFTMaqvUYt01/img.jpg')}
+			/* GNB */
+			#gnb ul {
+				display: flex;
+				justify-content:center;
+				font-size: 14px;
+				font-weight: 700;
+			}
+			#gnb li {color: purple;}
+			#gnb li::after {content: '';display: inline-block;margin: 0 50px;width: 1px;height: 12px;background-color: #888;}
+			#gnb li:last-child::after {display: none;}
+			/* Main */
+			.form_login_wrap {padding: 120px 0;}
+			h2 {margin-bottom: 32px;font-size: 22px;font-weight: 700;text-align: center;}
+			.form_login {display: flex;flex-direction: column;gap:16px;width: 300px;margin: 0 auto;}
+			.form_login input, .form_login a[class*='btn'] {display: block;box-sizing:border-box;width: 100%;border-radius: 3px;}
+			.form_login .inputs_login, .form_login .btns_sign {display: flex;flex-direction: column;}
+			.form_login .inputs_login {gap:10px}
+			.form_login input {height: 40px;padding-left: 6px;border: 1px solid #AAA;font-size: 14px;}
+			.form_login input:focus {outline: none;border-color: purple;}
+			.form_login .btns_sign {gap:12px;}
+			.form_login a[class*='btn'] {display: flex;justify-content: center;align-items: center;height: 48px;border: 1px solid purple;font-size: 14px;}
+			.form_login a[class*='btn']:first-child {background-color: purple;font-weight: 700;color: #FFF;}
+			/* Footer */
+			#footer {padding-top: 30px;border-top: 1px solid #DDD;}
+			.certificate_wrap {display: flex;justify-content: center;}
+			.list_certi {display: flex;align-items:flex-start;gap:30px;font-size: 10px;color: #555;}
+			.list_certi li {display: flex;gap:10px;}
+			.list_certi li p {line-height: 16px;}
+		</style>
+  </head>
+  <body>
+		<div id="warpper">
+			<header id="header">
+				<nav class="nav_sign">
+					<ul>
+						<li><a href="#a">회원가입</a></li>
+						<li><a href="#a">로그인</a></li>
+					</ul>
+				</nav>
+				<h1><a href="#index" class="ir">마켓컬리</a></h1>
+				<nav id="gnb">
+					<ul>
+						<li><a href="#a">전체상품 보기</a></li>
+						<li><a href="#a">신상품</a></li>
+						<li><a href="#a">베스트</a></li>
+						<li><a href="#a">알뜰쇼핑</a></li>
+					</ul>
+				</nav>
+			</header>
+			<main id="main">
+				<div class="container">
+					<div class="form_login_wrap">
+						<h2>로그인</h2>
+						<div class="form_login">
+							<div class="inputs_login">
+								<input type="text" placeholder="아이디를 입력하세요">
+								<input type="password" placeholder="비밀번호를 입력하세요">
+							</div>
+							<div class="btns_sign">
+								<a href="#a" class="btn_login">로그인</a>
+								<a href="#a" class="btn_signUp">회원가입</a>
+							</div>
+						</div>
+					</div>
+				</div><!-- .container -->
+			</main>
+			<footer id="footer">
+				<div class="certificate_wrap">
+					<ul class="list_certi">
+						<li>
+							<img src="https://res.kurly.com/pc/ico/2208/logo_isms.svg" alt="쇼핑몰서비스인증마크">
+							<div class="certi_inner">
+								<p>[인증범위]마켓컬리 쇼핑몰 서비스 개발 &middot; 운영</p>
+								<p>[유효기간]2019.04.01~2022.03.31</p>
+							</div>
+						</li>
+						<li>
+							<img src="https://res.kurly.com/pc/ico/2208/logo_privacy.svg" alt="개인정보보호 우수 웹사이트 인증마크">
+							<div class="certi_inner">
+								<p>개인정보보호 우수 웹사이트</p>
+								<p>개인정보처리시스템 인증(ePRIVACY PLUS)</p>
+							</div>
+						</li>
+						<li>
+							<img src="https://res.kurly.com/pc/ico/2208/logo_tosspayments.svg" alt="페이먼츠 인증마크">
+							<div class="certi_inner">
+								<p>토스페이먼츠 구매안전(에스크로)<br>서비스를 이용하실 수 있습니다.</p>
+								<p></p>
+							</div>
+						</li>
+					</ul>
+				</div><!-- .certificate_wrap -->
+			</footer>
+		</div><!-- #warpper -->
+  </body>
+</html>
