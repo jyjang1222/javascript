@@ -240,52 +240,92 @@ const cartList = [
     }
 ]
 
-
-
-/* 문제
-1. 카테고리별로 많이팔린 아이템 n개
-2. 이달의 신상품 n개
-3. 상품 신상품순
-4. 상품 판매순
-5. 상품 할인율순
-6. 상품 가격낮은순
-7. 한페이지에 n개씩 표시
-8. 가장 많이 조회한 리뷰
-9. 가입일 기준으로 정렬
-10. 리뷰가 가장 많이쓰인 상품 */
-
-// itemList.sort((a, b) => b.itemSold - a.itemSold);
-// const itemType = ['lotion', 'cream', 'essence', 'cleansing']
-
-// 3
-// 신상품순
-
-// 4
-// 판매율 높은순 (내림차순)
-itemList.sort((a, b) => b.itemSold - a.itemSold)
-console.log(itemList)
-
-// 5
-// 할인율 높은순(내림차순)
-itemList.sort((a, b) => b.itemDiscount - a.itemDiscount)
-console.log(itemList)
-
-// 6
-// 모든상품 가격 오름차순 정렬
-itemList.sort((a, b) => a.itemPrice - b.itemPrice)
-console.log(itemList)
-
-// 로션만 가격 오름차순 정렬
-itemList.sort((a, b) => {
-    if (a.itemType === 'lotion' && b.itemType === 'lotion') {
-        return a.itemPrice - b.itemPrice
+// 1. 카테고리별로 많이팔린 아이템 n개
+var category = ['essence', 'lotion', 'cream', 'cleansing'];
+var productSalesByItem = itemList.sort((a, b) => {
+    if(b["itemType"] == a['itemType']){
+        return b["itemSold"] - a["itemSold"];
+    } else{
+        return b["itemType"] - a['itemType']
     }
 });
-
-for (const item of itemList) {
-    if (item.itemType === 'lotion') {
-        console.log(item.itemName)
-        console.log(item.itemPrice)
+// console.log(productSalesByItem)
+var itemCount = 3;
+for(var i = 0; i < category.length; i++){
+    var count = 0;
+    var j = 0;
+    // console.log(category[i]);
+    while(count < itemCount){
+        if(category[i] == productSalesByItem[j]["itemType"]){
+            // console.log(productSalesByItem[j]["itemName"]);
+            count++;
+            if(count == itemCount){
+                break;
+            }
+        }
+        j++;
+        if(j >= itemList.length){
+            break;
+        }
     }
 }
 
+// 2. 이달의 신상품 n개
+var newN = 5;
+
+if(newN > itemList.length){
+    newN = itemList.length;
+}
+var newItem = itemList.sort((a, b) => Number(b["itemDate"].split('/').join('')) - Number(a["itemDate"].split('/').join('')));
+for(var i = 0; i < newN; i++){
+    // console.log(i + 1);
+    for(item in newItem[i]){
+        // console.log(item + " : " + newItem[i][item]);
+    }
+}
+
+// 3. 상품 신상품순
+var newItemList = itemList.sort((a, b) => Number(b["itemDate"].split('/').join('')) - Number(a["itemDate"].split('/').join('')));
+// console.log(newItemList);
+
+// 4. 상품 판매순
+var productSales = itemList.sort((a, b) =>  b["itemSold"] - a["itemSold"]);
+// console.log(productSales);
+
+// 5. 상품 할인율순
+var productDiscount = itemList.sort((a, b) => b["itemDiscount"] - a["itemDiscount"]);
+// console.log(productDiscount);
+
+// 6. 상품 가격낮은순
+var priceDescending = itemList.sort((a, b) => a["itemPrice"] - b["itemPrice"]);
+// console.log(priceDescending);
+
+// 8. 가장 많이 조회한 리뷰
+var reviewAscending = reviewDB.sort((a, b) => b["reviewViewCount"] - a['reviewViewCount']);
+// console.log(reviewAscending);
+
+// 7. 한페이지에 n개씩 표시
+var pageNum = 5;
+for(var i = 0; i < pageNum; i++){
+    console.log(i + 1);
+    for(item in itemList[i]){
+        console.log(item + " : " + itemList[i][item]);
+    }
+}
+
+// 9. 가입일 기준으로 정렬
+var sortByJoinDate =  memberDB.sort((a, b) => Number(a["memberJoinDate"].split('/').join('')) - Number(b["memberJoinDate"].split('/').join('')));
+// console.log(sortByJoinDate);
+
+// 10. 리뷰가 가장 많이쓰인 상품
+var reviewMap = new Map();
+
+for(var i = 0; i < reviewDB.length; i++){
+    if(reviewMap.has(reviewDB[i]["reviewItemName"])){
+        reviewMap.set(reviewDB[i]["reviewItemName"], reviewMap.get(reviewDB[i]["reviewItemName"]) + 1);
+    } else{
+        reviewMap.set(reviewDB[i]["reviewItemName"], 1);
+    }
+}
+
+// console.log([...reviewMap][0][0]);
